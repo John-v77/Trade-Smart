@@ -5,11 +5,11 @@ import {Link} from 'react-router-dom';
 function Navbar(props) {
     return (
         <div className="navBar shadow">
-            <img src='/' alt='logo'/>
+            {/* <img src='/' alt='logo'/> */}
             <Link to='/'>Home</Link>
-            <Link to='/'>Portfolion</Link>
-            <Link to='/'>Home</Link>
-            <Link to='/'>Contact</Link>           
+            <Link to='/Porfolio'>Portfolio</Link>
+            <Link to='/WatchList'>Watch List</Link>
+            <Link to='/Contact'>Contact</Link>           
         </div>
     );
 }
