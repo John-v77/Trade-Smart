@@ -1,7 +1,43 @@
+:root{
+  --main-color: #29ca8e;
+}
+
+
 .App {
   text-align: center;
 }
 
+.shadow{
+  box-shadow: 0 6px 1rem rgba(0,0,0,.1);
+}
+
 .navBar{
-  background-color: blue;
+  border-top: 5px solid var(--main-color);
+  background-color: white;
+  height: 70px;
+  margin-bottom: 0;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navBar a{
+  text-decoration: none;
+  color: black;
+  padding: 25px 20px;
+  justify-content: center;
+
+  /* background-color: transparent; */
+}
+
+.navBar a:hover{
+  background-color: var(--main-color);
+  color: white;
+  font-weight: 400;
+
+}
+
+.navBar img{
+  width: 100;
+  height: 70;
 }
