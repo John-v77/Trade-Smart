@@ -1,3 +1,7 @@
+/* /Media queries */
+@import './App-medium.css';
+@import './App-large.css';
+
 :root{
   --main-color: #29ca8e;
 }
@@ -16,7 +20,7 @@
 .navBar{
   border-top: 5px solid var(--main-color);
   background-color: white;
-  height: 70px;
+  height: 7vh;
   margin-bottom: 0;
   padding-left: 15%;
   display: flex;
@@ -26,7 +30,7 @@
 .navBar a{
   text-decoration: none;
   color: black;
-  padding: 25px 20px;
+  /* padding: 25px 20px; */
   justify-content: center;
 
   /* background-color: transparent; */
@@ -40,6 +44,21 @@
 }
 
 .navBar img{
-  width: 100;
-  height: 70;
+  width: 9%;
+  height: 7vh;
+}
+/* ------------------------Nav Bar -------------------------------- */
+/* ------------------------------- -------------------------------- */
+
+
+/* ------------------------Home -------------------------------- */
+
+.home img{
+  width: 80%;
+  height: 40vh;
+  /* padding-left: 10%; */
+}
+
+.home div{
+  background-color: rgb(61, 61, 61);
 }
