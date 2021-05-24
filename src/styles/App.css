@@ -1,6 +1,5 @@
 /* /Media queries */
-@import './App-medium.css';
-@import './App-large.css';
+
 
 :root{
   --main-color: #29ca8e;
@@ -30,13 +29,15 @@
 .navBar a{
   text-decoration: none;
   color: black;
-  /* padding: 25px 20px; */
+  padding: 25px 20px;
   justify-content: center;
 
   /* background-color: transparent; */
 }
 
-.navBar a:hover{
+.navBar a:hover,
+.navBar a:focus,
+.navBar a:active{
   background-color: var(--main-color);
   color: white;
   font-weight: 400;
@@ -61,4 +62,76 @@
 
 .home div{
   background-color: rgb(61, 61, 61);
+}
+/* ^-----------------------Home -------------------------------^ */
+
+/* \/-----------------------Stock Details ------------------------------\/ */
+
+.ChartSection{
+  margin-top: 4rem;
+  display: flex;
+}
+
+
+.SearchForm{
+  width: 20%;
+  margin:0 7rem 0 10rem;
+  border: 1px solid lightgrey;
+  border-radius: 0.3rem;
+  box-shadow: 1px 1px 5px 0px rgba(92, 92, 92, 0.5);
+  /* border: 1px solid black; */
+}
+
+.SearchForm input, button{
+  height: 2rem;
+  border:0;
+  color: black;
+  font-size: 1rem;
+}
+
+.SearchForm input[type=text]{
+  width: 25%;
+  /* height: 2rem; */
+  background: rgb(240, 239, 239);
+  padding: 0 1.6rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+/* .SearchForm input:focus{
+  outline: rgb(2, 125, 248);
+} */
+
+.SearchForm button{
+  /* height: 2rem; */
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: var(--main-color);
+  
+}
+
+.SearchForm p{
+  margin-top: 15%;
+}
+
+
+.Chart{
+  width: 50%;
+  height: 500px;
+  border:1px solid gainsboro;
+  border-radius: 0.25rem;
+  box-shadow: 1px 1px 5px 0px rgba(92, 92, 92, 0.5);
+}
+
+.Chart p{
+  color: blue;
+  margin: 0;
+  padding-bottom:0.5rem;
+}
+
+.toolTip{
+  border-radius: 0.25rem;
+  background-color: lightgrey;
+  color: black;
+  padding: 1rem;
+  box-shadow: 15px 30px 40px 5px rgb(0, 0, 0, 0.5);
+  text-align: center;
 }
