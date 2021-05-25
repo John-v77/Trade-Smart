@@ -2,26 +2,31 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
 // import { chartData } from "./data";
 function Chart(props) {
-  // console.log(props.data, 'pros')
+  // console.log(props, 'pros')
     const data = props.data
 
     const CustomToolTip =({active, payload, label}) =>{
-        if(active){
+      // console.log(payload)
+      if(payload[0] === undefined){ return null
+      }else if(active){
           return(
           <div className="toolTip">
             <h4>H</h4>
             <p>${payload[0].value.toFixed(2)}</p>
+            <p>{payload[0].payload.label}</p>
           </div>
           )}
     }
+
+
+
+// render page
     return (
         <div>
-
-
         <ResponsiveContainer width='100%' height={400}>
           <AreaChart  data={data}
                       margin={{
-                          top: 80,
+                          top: 30,
                           right: 10,
                           left: 10,
                           bottom: 0,
@@ -51,7 +56,7 @@ function Chart(props) {
              />
             
           <XAxis 
-            dataKey="minute"
+            dataKey="label"
             axisLine={false}
             tickLine={false}
             // tick={{ fill: 'gainsboro' }}
@@ -62,10 +67,18 @@ function Chart(props) {
 
             />
           
-          <Tooltip 
+          <Tooltip
+            content={<CustomToolTip/>}
+            position={{ x: 700, y: 0 }}
             // content={<CustomToolTip/>}
 
             />
+            <Legend 
+              verticalAlign="top"
+              align="left"
+              iconType='circle'
+              height={40}/>
+              
             <Area 
               connectNulls={true}
               dataKey='high'
@@ -73,6 +86,7 @@ function Chart(props) {
               strokeWidth={2.5}
               fill='lightgreen'
               fillOpacity={0.2}
+              name={props.name}
               />
               {/* <Area 
               connectNulls={true}
@@ -85,7 +99,7 @@ function Chart(props) {
           </AreaChart>
         </ResponsiveContainer>
 
-
+    
 
 
         {/* /Line Chart */}
