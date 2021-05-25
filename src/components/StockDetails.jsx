@@ -24,7 +24,7 @@ function StockDetails(props) {
             .then(res => {
                 console.log(res.data)
                 setStock(res.data)
-                // console.log(stock, typeof(stock), 'stock')
+                console.log(stock, typeof(stock), 'stock')
             })
             
     }
@@ -73,8 +73,9 @@ function StockDetails(props) {
   };
 
      useEffect(() => {
+         //defauld value
         getStockChartData('SPY')
-
+        getStockDetails('SPY')
         // setChartInterval(chartOptions.fiveYears)
         // console.log(chartInterval, 'hh')    
      }, []);
@@ -99,9 +100,43 @@ function StockDetails(props) {
                 
                                                     {/* /Fundamentals Section */}
             </section>
-            <section className="Fundamentals">
-               
+            <h2 id='companyName'>{stock.companyName}</h2>
+            <section className="fundamentals">
+                
+                    <div>
+                        <p>previousClose : {stock.previousClose}</p>
+                        <p>Open Price : {stock.iexOpen}</p>
+                        <p>Average volume : {(stock.avgTotalVolume/1000000).toFixed(2)}m</p>
+                        <p>Previous Volume : {(stock.previousVolume/1000000).toFixed(2)}m</p>
+                    </div>
+                    <div>
+                    {/* {stock} */}
+                        <p>Day Change: ${stock.change} {'\u00A0'}{'\u00A0'}:{'\u00A0'}{'\u00A0'} {(stock.changePercent*100).toFixed(2)}%</p>
+                        <p>Year to date : {(stock.ytdChange*100).toFixed(2)}%</p>
+                        <p>52 Weeks Range : ${(stock.week52High - stock.week52Low).toFixed(2)}</p>
+                        <p>Market Cap : {(stock.marketCap/1000000000).toFixed(2)}b</p>
+                        {/* <p>P/E : {stock.peRatio}</p> */}
+                    </div>
+                    <div>
+                        <p>Bid Price : ${stock.iexBidPrice}</p>
+                        <p>Bid Size : {stock.iexBidSize}</p>
+                        <p>Ask Price : ${stock.iexAskPrice}</p>
+                        <p>Ask Size : {stock.iexAskSize}</p>
+                    </div>
+
+
+                {/* <div>  buttons for chart
+                    <button onClick={changeChart(chartOptions.day)}/>
+                    <button onClick={changeChart(chartOptions.week)}/> 
+                    <button onClick={changeChart(chartOptions.month)}/>
+                    <button onClick={changeChart(chartOptions.year)}/>
+                    <button onClick={changeChart(chartOptions.twoYears)}/>
+                    <button onClick={changeChart(chartOptions.fiveYears)}/>
+                    <button onClick={changeChart(chartOptions.yearToDate)}/>
+                </div> */}
+                                                    {/* /Fundamentals News */}
             </section>
+                
             <section className="News">
 
             </section>
