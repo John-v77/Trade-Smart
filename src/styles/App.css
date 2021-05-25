@@ -149,6 +149,15 @@
 }
 
 .fundamentals div{
-  width: 20%;
-  padding: 0 5%;
+  width: 15%;
+  padding: 0 7%;
+}
+
+.fundamentals span{
+  float: right;
+  font-weight: 400;
+}
+
+.fundamentals p{
+  font-weight: 500;
 }

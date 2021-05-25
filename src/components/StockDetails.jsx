@@ -104,24 +104,24 @@ function StockDetails(props) {
             <section className="fundamentals">
                 
                     <div>
-                        <p>previousClose : {stock.previousClose}</p>
-                        <p>Open Price : {stock.iexOpen}</p>
-                        <p>Average volume : {(stock.avgTotalVolume/1000000).toFixed(2)}m</p>
-                        <p>Previous Volume : {(stock.previousVolume/1000000).toFixed(2)}m</p>
+                        <p>previousClose :      <span>{stock.previousClose}</span></p>
+                        <p>Open Price :         <span>{stock.iexOpen}</span></p>
+                        <p>Average volume :     <span>{(stock.avgTotalVolume/1000000).toFixed(2)}m</span></p>
+                        <p>Previous Volume :    <span>{(stock.previousVolume/1000000).toFixed(2)}m</span></p>
                     </div>
                     <div>
                     {/* {stock} */}
-                        <p>Day Change: ${stock.change} {'\u00A0'}{'\u00A0'}:{'\u00A0'}{'\u00A0'} {(stock.changePercent*100).toFixed(2)}%</p>
-                        <p>Year to date : {(stock.ytdChange*100).toFixed(2)}%</p>
-                        <p>52 Weeks Range : ${(stock.week52High - stock.week52Low).toFixed(2)}</p>
-                        <p>Market Cap : {(stock.marketCap/1000000000).toFixed(2)}b</p>
+                        <p>Day Change:          <span>${stock.change} {'\u00A0'}{'\u00A0'}:{'\u00A0'}{'\u00A0'} {(stock.changePercent*100).toFixed(2)}%</span></p>
+                        <p>Year to date :       <span>{(stock.ytdChange*100).toFixed(2)}%</span></p>
+                        <p>52 Weeks Range :     <span>${(stock.week52High - stock.week52Low).toFixed(2)}</span></p>
+                        <p>Market Cap :         <span>{(stock.marketCap/1000000000).toFixed(2)}b</span></p>
                         {/* <p>P/E : {stock.peRatio}</p> */}
                     </div>
                     <div>
-                        <p>Bid Price : ${stock.iexBidPrice}</p>
-                        <p>Bid Size : {stock.iexBidSize}</p>
-                        <p>Ask Price : ${stock.iexAskPrice}</p>
-                        <p>Ask Size : {stock.iexAskSize}</p>
+                        <p>Bid Price :     <span>${stock.iexBidPrice}</span></p>
+                        <p>Bid Size :      <span>{stock.iexBidSize}</span></p>
+                        <p>Ask Price :     <span>${stock.iexAskPrice}</span></p>
+                        <p>Ask Size :      <span>{stock.iexAskSize}</span></p>
                     </div>
 
 
