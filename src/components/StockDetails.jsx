@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 // import {getStockDetails, getStockChartData, handleChange, getData} from './utils';
 import Chart from './Chart.js'
+import News from './auxComponents/News.jsx';
+import Footer from './auxComponents/Footer.jsx';
 function StockDetails(props) {
 
     let[stockSearched, setStockSearched] = useState('')
@@ -92,10 +94,11 @@ function StockDetails(props) {
                         <p>Search your stock here</p>  
                         <input type='text' onChange={handleChange} name='value' placeholder='Type...' className="shadow"></input>
                         <button type="submit" className="shadow">Go</button>
+                        <p>You can search here for the stock ticker. You can if not familiar with them you can try any of this tickers: BAC, SPY, TSLA, V, Uber </p>
                     </form>
                 </div>
                 <div className='Chart'>
-                    <Chart data={chartData} name={`${stock.companyName}`}/>
+                    <Chart data={chartData} name={`${stock.companyName}`} symbol={`${stock.symbol}`}/>
                 </div>
                 
                                                     {/* /Fundamentals Section */}
@@ -104,24 +107,24 @@ function StockDetails(props) {
             <section className="fundamentals">
                 
                     <div>
-                        <p>previousClose :      <span>{stock.previousClose}</span></p>
-                        <p>Open Price :         <span>{stock.iexOpen}</span></p>
-                        <p>Average volume :     <span>{(stock.avgTotalVolume/1000000).toFixed(2)}m</span></p>
-                        <p>Previous Volume :    <span>{(stock.previousVolume/1000000).toFixed(2)}m</span></p>
+                        <p>previousClose :      <span>${stock.previousClose}</span></p>
+                        <p>Open Price :         <span>${stock.iexOpen}</span></p>
+                        <p>Average volume :     <span>${(stock.avgTotalVolume/1000000).toFixed(2)}Mil</span></p>
+                        <p>Previous Volume :    <span>${(stock.previousVolume/1000000).toFixed(2)}Mil</span></p>
                     </div>
                     <div>
                     {/* {stock} */}
                         <p>Day Change:          <span>${stock.change} {'\u00A0'}{'\u00A0'}:{'\u00A0'}{'\u00A0'} {(stock.changePercent*100).toFixed(2)}%</span></p>
-                        <p>Year to date :       <span>{(stock.ytdChange*100).toFixed(2)}%</span></p>
+                        <p>Year to date :       <span>${(stock.ytdChange*100).toFixed(2)}%</span></p>
                         <p>52 Weeks Range :     <span>${(stock.week52High - stock.week52Low).toFixed(2)}</span></p>
-                        <p>Market Cap :         <span>{(stock.marketCap/1000000000).toFixed(2)}b</span></p>
+                        <p>Market Cap :         <span>${(stock.marketCap/1000000000).toFixed(2)}Bil</span></p>
                         {/* <p>P/E : {stock.peRatio}</p> */}
                     </div>
                     <div>
                         <p>Bid Price :     <span>${stock.iexBidPrice}</span></p>
-                        <p>Bid Size :      <span>{stock.iexBidSize}</span></p>
+                        <p>Bid Size :      <span>x{stock.iexBidSize}</span></p>
                         <p>Ask Price :     <span>${stock.iexAskPrice}</span></p>
-                        <p>Ask Size :      <span>{stock.iexAskSize}</span></p>
+                        <p>Ask Size :      <span>x{stock.iexAskSize}</span></p>
                     </div>
 
 
@@ -136,11 +139,11 @@ function StockDetails(props) {
                 </div> */}
                                                     {/* /Fundamentals News */}
             </section>
-                
-            <section className="News">
-
-            </section>
-
+            <h2 id='companyName'>News</h2>
+            <News/>
+            <div>
+                <Footer/>
+            </div>
         </div>
     );
 }

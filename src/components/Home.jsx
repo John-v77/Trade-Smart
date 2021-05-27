@@ -1,5 +1,6 @@
 import React from 'react';
 import MainPicture from '../images/mainPic.jpg'
+import Footer from './auxComponents/Footer';
 
 function Home(props) {
     return (
@@ -7,6 +8,9 @@ function Home(props) {
             <div>
                 <img src={MainPicture} alt="chart"/>
             </div>
+            {/* <div>
+                <Footer/>
+            </div> */}
         </div>
     );
 }

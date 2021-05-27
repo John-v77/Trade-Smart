@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import {XAxis, YAxis, Tooltip,Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
 // import { chartData } from "./data";
 function Chart(props) {
   // console.log(props, 'pros')
@@ -11,9 +11,9 @@ function Chart(props) {
       }else if(active){
           return(
           <div className="toolTip">
-            <h4>H</h4>
-            <p>${payload[0].value.toFixed(2)}</p>
-            <p>{payload[0].payload.label}</p>
+           <div><h5><b>{props.symbol}</b></h5></div>
+           <div><h5>${payload[0].value.toFixed(2)}</h5></div>
+           <div><h5>{payload[0].payload.label}</h5></div>
           </div>
           )}
     }
@@ -68,8 +68,9 @@ function Chart(props) {
             />
           
           <Tooltip
-            content={<CustomToolTip/>}
-            position={{ x: 700, y: 0 }}
+            async content={<CustomToolTip/>}
+            position={{ x: 870, y: -20 }}
+            // viewBox={{ x: 0, y: 0 ,width: 400, height: 400}}
             // content={<CustomToolTip/>}
 
             />
