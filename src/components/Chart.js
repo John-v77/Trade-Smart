@@ -11,9 +11,9 @@ function Chart(props) {
       }else if(active){
           return(
           <div className="toolTip">
-           <div><h5><b>{props.symbol}</b></h5></div>
+           <div><h5>{props.symbol}</h5></div>
            <div><h5>${payload[0].value.toFixed(2)}</h5></div>
-           <div><h5>{payload[0].payload.label}</h5></div>
+           <div><h5>{label}</h5></div>
           </div>
           )}
     }
@@ -69,7 +69,7 @@ function Chart(props) {
           
           <Tooltip
             async content={<CustomToolTip/>}
-            position={{ x: 870, y: -20 }}
+            position={{ x: 750, y: 0 }}
             // viewBox={{ x: 0, y: 0 ,width: 400, height: 400}}
             // content={<CustomToolTip/>}
 
