@@ -6,6 +6,7 @@ import Porfolio from './components/Porfolio';
 import Home from './components/Home';
 import StockDetails from './components/StockDetails';
 import Contact from './components/Contact';
+import AddFormWatchList from './components/auxComponents/AddFormWatchList';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route exact path='/Porfolio' render={(props) => <Porfolio {...props}/>}/>
       <Route exact path='/StockDetails' render={(props) => <StockDetails {...props}/>}/>
       <Route exact path='/Contact' render={(props) => <Contact {...props}/>}/>
+      <Route exact path='/Search-WatchList' render={(props) => <AddFormWatchList {...props}/>}/>
     </Switch>
       
     </div>

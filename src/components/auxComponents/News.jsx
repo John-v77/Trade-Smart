@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import getNews from './utils.js'
+import getNews from './APi.js'
 function News(props) {
     
     let[news, setNews] = useState([])
