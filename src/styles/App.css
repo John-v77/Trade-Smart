@@ -214,3 +214,32 @@ a{
 .footer a{
   color: rgb(243, 243, 243);
 }
+
+
+
+/* \/-----------------------Watch List Component ------------------------------\/ */
+
+.top-bts-MyList{
+  text-align: right;
+}
+
+
+.top-bts-MyList button{
+  height: 1.5rem;
+  border-radius: 5px;
+  color: white;
+  background-color: #24b37e;
+  font-size: small;
+  font-weight: 600;
+  margin: 0 0.3rem;
+}
+
+.each-row-watchList{
+  display: flex;
+  width: 100%;
+}
+
+.each-row-watchList div{
+  border: solid black 1px;
+  width: 15%;
+}
