@@ -7,22 +7,26 @@ import Home from './components/Home';
 import StockDetails from './components/StockDetails';
 import Contact from './components/Contact';
 import AddFormWatchList from './components/auxComponents/AddFormWatchList';
+import { ContextProvider} from './components/auxComponents/StockContext';
 
 
 function App() {
   return (
-    <div className="App">
-    <Navbar/>
-    <Switch>
-      <Route exact path='/' render={(props) => <Home {...props}/>}/>
-      <Route exact path='/WatchList' render={(props) => <WatchList {...props}/>}/>
-      <Route exact path='/Porfolio' render={(props) => <Porfolio {...props}/>}/>
-      <Route exact path='/StockDetails' render={(props) => <StockDetails {...props}/>}/>
-      <Route exact path='/Contact' render={(props) => <Contact {...props}/>}/>
-      <Route exact path='/Search-WatchList' render={(props) => <AddFormWatchList {...props}/>}/>
-    </Switch>
-      
-    </div>
+    <ContextProvider>
+      <div className="App">
+      <Navbar/>
+      <Switch>
+        <Route exact path='/' render={(props) => <Home {...props}/>}/>
+        <Route exact path='/WatchList' render={(props) => <WatchList {...props}/>}/>
+        <Route exact path='/Porfolio' render={(props) => <Porfolio {...props}/>}/>
+        <Route exact path='/StockDetails' render={(props) => <StockDetails {...props}/>}/>
+        <Route exact path='/Contact' render={(props) => <Contact {...props}/>}/>
+        <Route exact path='/Search-WatchList' render={(props) => <AddFormWatchList {...props}/>}/>
+      </Switch>
+      </div>
+
+    </ContextProvider> 
+
   );
 }
 

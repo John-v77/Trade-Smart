@@ -109,15 +109,15 @@ function StockDetails(props) {
                     <div>
                         <p>previousClose :      <span>${stock.previousClose}</span></p>
                         <p>Open Price :         <span>${stock.iexOpen}</span></p>
-                        <p>Average volume :     <span>${(stock.avgTotalVolume/1000000).toFixed(2)}Mil</span></p>
-                        <p>Previous Volume :    <span>${(stock.previousVolume/1000000).toFixed(2)}Mil</span></p>
+                        <p>Average volume :     <span>${(stock.avgTotalVolume/1000000).toFixed(2)} mil</span></p>
+                        <p>Previous Volume :    <span>${(stock.previousVolume/1000000).toFixed(2)} mil</span></p>
                     </div>
                     <div>
                     {/* {stock} */}
                         <p>Day Change:          <span>${stock.change} {'\u00A0'}{'\u00A0'}:{'\u00A0'}{'\u00A0'} {(stock.changePercent*100).toFixed(2)}%</span></p>
                         <p>Year to date :       <span>${(stock.ytdChange*100).toFixed(2)}%</span></p>
                         <p>52 Weeks Range :     <span>${(stock.week52High - stock.week52Low).toFixed(2)}</span></p>
-                        <p>Market Cap :         <span>${(stock.marketCap/1000000000).toFixed(2)}Bil</span></p>
+                        <p>Market Cap :         <span>${(stock.marketCap/1000000000).toFixed(2)} bil</span></p>
                         {/* <p>P/E : {stock.peRatio}</p> */}
                     </div>
                     <div>
