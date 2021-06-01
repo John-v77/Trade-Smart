@@ -243,3 +243,63 @@ a{
   border: solid black 1px;
   width: 15%;
 }
+
+/* \/----------------------- Watch List Component ------------------------------\/ */
+
+.search-form-addStock input{
+  width: 70%;
+  height: 1.6rem;
+  margin-top: 3rem;
+}
+
+
+
+
+
+.search-form-addStock{
+  width: 20%;
+  height: 20rem;
+  margin:5% 35%;
+  border: 1px solid lightgrey;
+  border-radius: 0.3rem;
+  box-shadow: 1px 1px 5px 0px rgba(92, 92, 92, 0.5);
+  padding: 0 1.6rem;
+  /* border: 1px solid black; */
+}
+
+.search-form-addStock input, button{
+  height: 1.65rem;
+  border:0;
+  color: rgb(51, 50, 50);
+  font-size: 1rem;
+}
+
+
+.search-form-addStock input[type=text]{
+  width: 45%;
+  /* height: 2rem; */
+  background: rgb(240, 239, 239);
+  padding: 0 1.6rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+/* .SearchForm input:focus{
+  outline: rgb(2, 125, 248);
+} */
+
+.search-form-addStock button{
+  /* height: 2rem; */
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: var(--main-color);
+  color: aliceblue;
+  
+}
+
+.result-add-watchList button{
+  border-radius: 0.5rem;
+  width: 4.5rem;
+}
+
+.search-form-addStock p{
+  margin-top: 15%;
+}
