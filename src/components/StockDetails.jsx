@@ -94,7 +94,9 @@ function StockDetails(props) {
                         <p>Search your stock here</p>  
                         <input type='text' onChange={handleChange} name='value' placeholder='Type...' className="shadow"></input>
                         <button type="submit" className="shadow">Go</button>
-                        <p>You can search here for the stock ticker. You can if not familiar with them you can try any of this tickers: BAC, SPY, TSLA, V, Uber </p>
+                        <p>Stock tickers can be searched here.</p>
+                        <p>If not familiar with them, every public company is represented by a unique set of characters.</p>
+                        <p>This are tickers for some popular companies: BAC, SPY, TSLA, V, Uber </p>
                     </form>
                 </div>
                 <div className='Chart'>
