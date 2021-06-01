@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {actions} from './APi'
 import {StocksContext} from './StockContext';
 function AddFormWatchList(props) {
@@ -12,11 +13,10 @@ function AddFormWatchList(props) {
     const [stocksList, setStocksList] = useContext(StocksContext);
     console.log(stocksList, '####')
     const recordValue = (e) =>{
-        // console.log(e.target.value)
         setSymbol(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const searchStock = (e) => {
         e.preventDefault()
         actions.getStockName(symbol)
             .then(res => {
@@ -28,22 +28,29 @@ function AddFormWatchList(props) {
         if(symbolName){
             SetSymbolName("Stock not found try another one") 
         }
-
-                        // console.log(list, '1list', symbol, ':simp')
-        setStocksList(curr => [...curr, symbol])
-        // console.log(stocksList, 'final list')
     }
 
+    const addStockToWatchList =(e)=> {
+        setStocksList(curr => [...curr, symbol])
+        localStorage.setItem('watchList', JSON.stringify(stocksList))
+    }
+
+
+
     return (
-            <div>
-                <p>You made it to the Search form</p>
-
-                <form onSubmit={handleSubmit} className="search-for-Watch-List">
+            <div className='search-form-addStock'>
+                <form onSubmit={searchStock} className="search-for-Watch-List">
                     <input type='text' onChange={recordValue}/>
-                    <button>Add</button>
+                    <button>search</button>
                 </form>
-
-                <div>{symbol}: {symbolName}: {stocksList}</div>
+                <br/><br/><br/>
+                <div className="result-add-watchList">
+                    <div>{symbolName}</div>
+                    <br/>
+                    <button onClick={addStockToWatchList}>add</button>
+                </div>
+                <br/><br/><br/>
+                <Link to='/WatchList'>go back</Link>
             </div>
     );
 }
