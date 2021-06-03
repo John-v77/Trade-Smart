@@ -11,7 +11,6 @@ function AddFormWatchList(props) {
     let [symbol, setSymbol] = useState([''])
     let [symbolName, SetSymbolName] = useState('')
     const [stocksList, setStocksList] = useContext(StocksContext);
-    console.log(stocksList, '####')
     const recordValue = (e) =>{
         setSymbol(e.target.value)
     }

@@ -1,60 +1,71 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import { actions } from './auxComponents/APi';
 
 function WatchList(props) {
 
     //list mock list
-let listStock =[
-        
-  { symbol:'spy',
-          companyName: 'SNP 500', 
-          iexAskPrice:380.36,
-          change:-1.97,
-          changePercent:-0.0052},   
-  { symbol:'tsla',
-          companyName: 'Tesla',  
-          iexAskPrice:781.30,
-          change:-6.08,
-          changePercent:-0.0077},
-  {  symbol:'bac',
-          companyName: 'Bank of America',  
-          iexAskPrice:34.54,
-          change:0.35,
-          changePercent:0.0102},
-  {  symbol:'nio', 
-          companyName: 'Nio INC', 
-          iexAskPrice:55.04,
-          change:0.61,
-          changePercent:0.0112},
-  { symbol:'pton', 
-          companyName: 'Peloton Inc', 
-          iexAskPrice:139.71,
-          change:+1.26,
-          changePercent:0.0091},
-  ]
+    const storageList = JSON.parse(localStorage.getItem('watchList'))
+    storageList.push('test')
+    // console.log(storageList, 'list', typeof(storageList))
 
+    let [displayList, SetDisplayList] = useState([])
+
+    const buildList =()=>{
+        
+        let newStock 
+
+        [...storageList].map((eachItem) => {
+
+            // SetDisplayList(
+
+                actions.getStockName(eachItem)
+                .then(res =>{
+                    // console.log(res.data)
+                    const {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange} = res.data
+                    newStock = {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange}
+                    // console.log(SetDisplayList, 'test')
+                    SetDisplayList(curr => [...curr, {newStock}])
+                    console.log('test', displayList)
+                    
+                })
+
+                
+                
+            // )
+            // console.log(displayList, 'displayList')
+        })
+    }
+
+        useEffect(() => {
+            buildList()
+        },[])
 
     const displayStocks = () =>{
-        return listStock.map((eachItem, keyOfRow) => {
+        return displayList.map((eachItem, keyOfRow) => {
+            // console.log(eachItem)
             return(
                 <div className="each-row-watchList">
                     <div>
-                        <p>M</p>
+                        <p>{eachItem.newStock.symbol}</p>
                     </div>
                     <div>
-                        <p>Macy's</p>
+                        <p>{eachItem.newStock.companyName}</p>
                     </div>
                     <div>
-                        <p>Price</p>
+                        <p>{eachItem.newStock.change}$</p>
                     </div>
                     <div> 
-                        <p>Change in Price</p>
+                        <p>{(eachItem.newStock.changePercent*100).toFixed(2)}%</p>
                     </div>
                     <div>
-                        <p>52 Weeks low</p>
+                        <p>{eachItem.newStock.week52Low}$</p>
                     </div>
                     <div>
-                        <p>52 Weeks high</p>
+                        <p>{eachItem.newStock.week52High}$</p>
+                    </div>
+                    <div>
+                        <p>{(eachItem.newStock.ytdChange*100).toFixed(2)}%</p>
                     </div>
                     <div>
                         <button>chart</button>
@@ -75,6 +86,7 @@ let listStock =[
                 
                 <button>Sort</button>
             </div>
+            
                 {displayStocks()}
 
             
