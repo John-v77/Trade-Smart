@@ -237,11 +237,17 @@ a{
 .each-row-watchList{
   display: flex;
   width: 100%;
+  margin: 0 2rem;
 }
 
 .each-row-watchList div{
-  border: solid black 1px;
-  width: 15%;
+  border: solid gainsboro 1px;
+  width: 12%;
+  
+}
+
+.each-row-watchList button{
+  margin-top: 1rem;
 }
 
 /* \/----------------------- Watch List Component ------------------------------\/ */

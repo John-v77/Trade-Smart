@@ -86,7 +86,32 @@ function WatchList(props) {
                 
                 <button>Sort</button>
             </div>
-            
+            <div className="each-row-watchList">
+                <div>
+                    <p>symbol</p>
+                </div>
+                <div>
+                    <p>companyName</p>
+                </div>
+                <div>
+                    <p>change</p>
+                </div>
+                <div> 
+                    <p>changePercent</p>
+                </div>
+                <div>
+                    <p>week52Low</p>
+                </div>
+                <div>
+                    <p>week52High</p>
+                </div>
+                <div>
+                    <p>ytdChange</p>
+                </div>
+                <div>
+                    <p>chart</p>
+                </div>
+            </div>
                 {displayStocks()}
 
             
