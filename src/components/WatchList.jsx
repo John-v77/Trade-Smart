@@ -5,67 +5,80 @@ import { actions } from './auxComponents/APi';
 function WatchList(props) {
 
     //list mock list
-    const storageList = JSON.parse(localStorage.getItem('watchList'))
-    storageList.push('test')
-    // console.log(storageList, 'list', typeof(storageList))
+    let mockList = [
+        {companyName:'Tesla Inc', symbol:'tsla', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
+        {companyName:'Apple Inc', symbol:'aapl', change:-1.24, changePercent:-0.85, week52High:157.10, week52Low:103.10, ytdChange:18.35, latestPrice:147.79},
+        {companyName:'Macys Inc', symbol:'m', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
+        {companyName:'United Steel Inc', symbol:'x', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
+        {companyName:'Zillow', symbol:'z', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
+    ]
+    const storageList = JSON.parse(localStorage.getItem('watchList')) ? JSON.parse(localStorage.getItem('watchList')) : ['appl']
+    let [displayList, SetDisplayList] = useState(mockList)
+    let [sortBtn, setSortBtn] = useState(false);
 
-    let [displayList, SetDisplayList] = useState([])
+    // const buildList =()=>{
+    //     let newStock 
+    //     [...storageList].map((eachItem) => {
+    //             actions.getStockName(eachItem)
+    //             .then(res =>{
+    //                 console.log(res.data)
+    //                 const {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice} = res.data
+    //                 newStock = {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice}
+    //                 SetDisplayList(curr => [...curr, {newStock}])
+    //                 console.log('test', displayList)
+    //             })
+    //     })
+    // }
 
-    const buildList =()=>{
+    // useEffect(() => {
+    //     buildList()
+    // },[])
+
+
+    const sortList =()=>{
         
-        let newStock 
+        let newArr = [...displayList]
+        if(sortBtn === false){
 
-        [...storageList].map((eachItem) => {
+        newArr.sort((a,b) => a.changePercent - b.changePercent)
+        SetDisplayList(newArr)
+        setSortBtn(true)
+        }else if(sortBtn === true){
+        newArr.sort((a,b) => b.changePercent - a.changePercent)
+        SetDisplayList(newArr)
+        setSortBtn(false) 
+        }  
 
-            // SetDisplayList(
-
-                actions.getStockName(eachItem)
-                .then(res =>{
-                    // console.log(res.data)
-                    const {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange} = res.data
-                    newStock = {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange}
-                    // console.log(SetDisplayList, 'test')
-                    SetDisplayList(curr => [...curr, {newStock}])
-                    console.log('test', displayList)
-                    
-                })
-
-                
-                
-            // )
-            // console.log(displayList, 'displayList')
-        })
     }
-
-        useEffect(() => {
-            buildList()
-        },[])
 
     const displayStocks = () =>{
         return displayList.map((eachItem, keyOfRow) => {
             // console.log(eachItem)
             return(
-                <div className="each-row-watchList">
+                <div className="each-row-watchList"  key={keyOfRow}>
                     <div>
-                        <p>{eachItem.newStock.symbol}</p>
+                        <p>{eachItem.companyName}</p>
                     </div>
                     <div>
-                        <p>{eachItem.newStock.companyName}</p>
+                        <p>{eachItem.symbol}</p>
                     </div>
                     <div>
-                        <p>{eachItem.newStock.change}$</p>
+                        <p>{eachItem.latestPrice}$</p>
+                    </div>
+                    <div>
+                        <p>{(eachItem.change).toFixed(2)}$</p>
                     </div>
                     <div> 
-                        <p>{(eachItem.newStock.changePercent*100).toFixed(2)}%</p>
+                        <p>{(eachItem.changePercent*100).toFixed(2)}%</p>
                     </div>
                     <div>
-                        <p>{eachItem.newStock.week52Low}$</p>
+                        <p>{eachItem.week52Low}$</p>
                     </div>
                     <div>
-                        <p>{eachItem.newStock.week52High}$</p>
+                        <p>{eachItem.week52High}$</p>
                     </div>
                     <div>
-                        <p>{(eachItem.newStock.ytdChange*100).toFixed(2)}%</p>
+                        <p>{(eachItem.ytdChange*100).toFixed(2)}%</p>
                     </div>
                     <div>
                         <button>chart</button>
@@ -84,7 +97,7 @@ function WatchList(props) {
                     <button>Add Stock</button>
                 </Link>
                 
-                <button>Sort</button>
+                <button onClick={sortList}>Sort</button>
             </div>
             <div className="each-row-watchList">
                 <div>
@@ -92,6 +105,9 @@ function WatchList(props) {
                 </div>
                 <div>
                     <p>companyName</p>
+                </div>
+                <div>
+                    <p>Price</p>
                 </div>
                 <div>
                     <p>change</p>
