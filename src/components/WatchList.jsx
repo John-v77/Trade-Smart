@@ -51,6 +51,12 @@ function WatchList(props) {
 
     }
 
+    const deleteRow=(keyOfRow)=>{
+        let newArr = [...displayList]
+        newArr.splice(keyOfRow,1)
+        SetDisplayList(newArr)
+    }
+
     const displayStocks = () =>{
         return displayList.map((eachItem, keyOfRow) => {
             // console.log(eachItem)
@@ -82,6 +88,11 @@ function WatchList(props) {
                     </div>
                     <div>
                         <button>chart</button>
+                    </div>
+                    <div class="del-btn-myList">
+                        <button onClick={() => deleteRow(keyOfRow)} class="delete-Btn">
+                            delete
+                        </button>
                     </div>
                 </div>
             )
