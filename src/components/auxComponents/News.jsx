@@ -18,7 +18,7 @@ function News(props) {
                 setNews(res.data.slice(0, 3))})
     },[])
 
-    console.log(news, 'news')
+    // console.log(news, 'news')
 
     const displayNews = () =>{
         let image
