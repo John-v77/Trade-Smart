@@ -65,6 +65,12 @@ a{
 .home div{
   background-color: rgb(61, 61, 61);
 }
+
+.home p{
+  width: 30%;
+  text-align: left;
+  margin: 10rem 35%;
+}
 /* ^-----------------------Home -------------------------------^ */
 
 /* \/-----------------------Stock Details ------------------------------\/ */
@@ -242,12 +248,12 @@ a{
 
 .each-row-watchList div{
   border: solid gainsboro 1px;
-  width: 12%;
+  width: 8%;
   
 }
 
 .each-row-watchList button{
-  margin-top: 1rem;
+  margin-top: 12%;
 }
 
 /* \/----------------------- Watch List Component ------------------------------\/ */
