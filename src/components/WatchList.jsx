@@ -16,23 +16,22 @@ function WatchList(props) {
     let [displayList, SetDisplayList] = useState(mockList)
     let [sortBtn, setSortBtn] = useState(false);
 
-    // const buildList =()=>{
-    //     let newStock 
-    //     [...storageList].map((eachItem) => {
-    //             actions.getStockName(eachItem)
-    //             .then(res =>{
-    //                 console.log(res.data)
-    //                 const {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice} = res.data
-    //                 newStock = {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice}
-    //                 SetDisplayList(curr => [...curr, {newStock}])
-    //                 console.log('test', displayList)
-    //             })
-    //     })
-    // }
+    const buildList =()=>{
+        let newStock 
+        [...storageList].map((eachItem) => {
+                actions.getStockName(eachItem)
+                .then(res =>{
+                    let newArr = [...displayList]
+                    const {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice} = res.data
+                    newArr.push({companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice})
+                    SetDisplayList(newArr)
+                })
+        })
+    }
 
-    // useEffect(() => {
-    //     buildList()
-    // },[])
+    useEffect(() => {
+        buildList()
+    },[])
 
 
     const sortList =()=>{
