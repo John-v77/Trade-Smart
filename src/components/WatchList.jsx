@@ -6,32 +6,31 @@ function WatchList(props) {
 
     //list mock list
     let mockList = [
-        {companyName:'Tesla Inc', symbol:'tsla', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
-        {companyName:'Apple Inc', symbol:'aapl', change:-1.24, changePercent:-0.85, week52High:157.10, week52Low:103.10, ytdChange:18.35, latestPrice:147.79},
-        {companyName:'Macys Inc', symbol:'m', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
-        {companyName:'United Steel Inc', symbol:'x', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
-        {companyName:'Zillow', symbol:'z', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
+        {companyName:'Tesla Inc', symbol:'tsla', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:0.2195, latestPrice:751.90},
+        {companyName:'Apple Inc', symbol:'aapl', change:-1.24, changePercent:-0.85, week52High:157.10, week52Low:103.10, ytdChange:0.1835, latestPrice:147.79},
+        {companyName:'Macys Inc', symbol:'m', change:4.17, changePercent:0.55, week52High:900.40, week52Low:351.40, ytdChange:0.2195, latestPrice:751.90},
+        {companyName:'United Steel Inc', symbol:'x', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:0.2195, latestPrice:751.90},
+        {companyName:'Zillow', symbol:'z', change:4.17, changePercent:0.55, week52High:900.40, week52Low:351.40, ytdChange:0.2195, latestPrice:751.90},
     ]
     const storageList = JSON.parse(localStorage.getItem('watchList')) ? JSON.parse(localStorage.getItem('watchList')) : ['appl']
     let [displayList, SetDisplayList] = useState(mockList)
     let [sortBtn, setSortBtn] = useState(false);
 
-    const buildList =()=>{
-        let newStock 
-        [...storageList].map((eachItem) => {
-                actions.getStockName(eachItem)
-                .then(res =>{
-                    let newArr = [...displayList]
-                    const {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice} = res.data
-                    newArr.push({companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice})
-                    SetDisplayList(newArr)
-                })
-        })
-    }
+    // const buildList =()=>{
+    //     [...storageList].map((eachItem) => {
+    //             actions.getStockName(eachItem)
+    //             .then(res =>{
+    //                 let newArr = [...displayList]
+    //                 const {companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice} = res.data
+    //                 newArr.push({companyName, symbol, change, changePercent, week52High, week52Low, ytdChange, latestPrice})
+    //                 SetDisplayList(newArr)
+    //             })
+    //     })
+    // }
 
-    useEffect(() => {
-        buildList()
-    },[])
+    // useEffect(() => {
+    //     buildList()
+    // },[])
 
 
     const sortList =()=>{
@@ -56,9 +55,14 @@ function WatchList(props) {
         SetDisplayList(newArr)
     }
 
+    const changeColors = (changeInPrice) => {
+        return((changeInPrice < 0) ? "red" : "green")
+    }
+
     const displayStocks = () =>{
         return displayList.map((eachItem, keyOfRow) => {
-            // console.log(eachItem)
+            
+            let numbersColor = changeColors(eachItem.change)
             return(
                 <div className="each-row-watchList"  key={keyOfRow}>
                     <div>
@@ -68,13 +72,13 @@ function WatchList(props) {
                         <p>{eachItem.symbol}</p>
                     </div>
                     <div>
-                        <p>{eachItem.latestPrice}$</p>
+                        <p style={{color:`${numbersColor}`}}>{eachItem.latestPrice}$</p>
                     </div>
                     <div>
-                        <p>{(eachItem.change).toFixed(2)}$</p>
+                        <p style={{color:`${numbersColor}`}}>{(eachItem.change).toFixed(2)}$</p>
                     </div>
                     <div> 
-                        <p>{(eachItem.changePercent*100).toFixed(2)}%</p>
+                        <p style={{color:`${numbersColor}`}}>{(eachItem.changePercent*100).toFixed(2)}%</p>
                     </div>
                     <div>
                         <p>{eachItem.week52Low}$</p>
@@ -83,7 +87,7 @@ function WatchList(props) {
                         <p>{eachItem.week52High}$</p>
                     </div>
                     <div>
-                        <p>{(eachItem.ytdChange*100).toFixed(2)}%</p>
+                    <p style={{color:`${changeColors(eachItem.ytdChange)}`}}>{(eachItem.ytdChange*100).toFixed(2)}%</p>
                     </div>
                     <div>
                         <button>chart</button>
