@@ -89,8 +89,8 @@ function WatchList(props) {
                     <div>
                     <p style={{color:`${changeColors(eachItem.ytdChange)}`}}>{(eachItem.ytdChange*100).toFixed(2)}%</p>
                     </div>
-                    <div>
-                        <button>chart</button>
+                    <div class="chart-btn-myList">
+                        <button onClick={() => deleteRow(eachItem.symbol)}>chart</button>
                     </div>
                     <div class="del-btn-myList">
                         <button onClick={() => deleteRow(keyOfRow)} class="delete-Btn">
@@ -106,19 +106,15 @@ function WatchList(props) {
         <div className="watch-list-component">
             <h3>My List</h3>
 
-            <div class="top-bts-MyList">
-                <Link to='/Search-WatchList'>
-                    <button>Add Stock</button>
-                </Link>
+            {/* <div class="top-bts-MyList">
                 
-                <button onClick={sortList}>Sort</button>
-            </div>
-            <div className="each-row-watchList">
+            </div> */}
+            <div className="each-row-watchList-header">
                 <div>
-                    <p>symbol</p>
+                    
                 </div>
                 <div>
-                    <p>companyName</p>
+                    <p>symbol</p>
                 </div>
                 <div>
                     <p>Price</p>
@@ -140,6 +136,13 @@ function WatchList(props) {
                 </div>
                 <div>
                     <p>chart</p>
+                </div>
+                <div className="top-bts-MyList">
+                    <Link to='/Search-WatchList'>
+                        <button>Add Stock</button>
+                    </Link>
+                    
+                    <button onClick={sortList}>Sort</button>
                 </div>
             </div>
                 {displayStocks()}

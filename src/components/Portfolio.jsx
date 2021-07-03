@@ -4,11 +4,11 @@ import { useState } from 'react/cjs/react.development';
 function Portfolio(props) {
     //list mock list
     let mockList = [
-       {companyName:'Tesla Inc', symbol:'tsla', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
-       {companyName:'Apple Inc', symbol:'aapl', change:-1.24, changePercent:-0.85, week52High:157.10, week52Low:103.10, ytdChange:18.35, latestPrice:147.79},
-       {companyName:'Macys Inc', symbol:'m', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
-       {companyName:'United Steel Inc', symbol:'x', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
-       {companyName:'Zillow', symbol:'z', change:-4.17, changePercent:-0.55, week52High:900.40, week52Low:351.40, ytdChange:21.95, latestPrice:751.90},
+       {companyName:'Tesla Inc', symbol:'tsla', change:-4.17, changePercent:-0.55, shares:200, aquisitionPrice:900, ytdChange:21.95, latestPrice:751.90},
+       {companyName:'Apple Inc', symbol:'aapl', change:-1.24, changePercent:-0.85, shares:100, aquisitionPrice:103.10, ytdChange:18.35, latestPrice:147.79},
+       {companyName:'Macys Inc', symbol:'m', change:-4.17, changePercent:-0.55, shares:10, aquisitionPrice:351.40, ytdChange:21.95, latestPrice:751.90},
+       {companyName:'United Steel Inc', symbol:'x', change:-4.17, changePercent:-0.55, shares:50, aquisitionPrice:500.40, ytdChange:21.95, latestPrice:751.90},
+       {companyName:'Zillow', symbol:'z', change:-4.17, changePercent:-0.55, shares:20, aquisitionPrice:800.40, ytdChange:21.95, latestPrice:751.90},
     ]
 
      let [sortedList, setSortedList] = useState(mockList)
@@ -52,16 +52,16 @@ function Portfolio(props) {
                         <p>{(eachItem.changePercent*100).toFixed(2)}%</p>
                     </div>
                     <div>
-                        <p>{eachItem.week52Low}$</p>
+                        <p>{eachItem.shares}</p>
                     </div>
                     <div>
-                        <p>{eachItem.week52High}$</p>
+                        <p>{(eachItem.aquisitionPrice).toFixed(2)}$</p>
                     </div>
                     <div>
                         <p>{(eachItem.ytdChange*100).toFixed(2)}%</p>
                     </div>
                     <div>
-                        <button>chart</button>
+                        <p>{((eachItem.latestPrice-eachItem.aquisitionPrice)*eachItem.shares).toFixed(2)}$</p>
                     </div>
                 </div>
             )
@@ -72,12 +72,12 @@ function Portfolio(props) {
         <div>
             <h3>Work in progress</h3>
             <button onClick={sortList}>Sort</button>
-            <div className="each-row-watchList">
+            <div className="each-row-watchList-header">
                 <div>
-                    <p>symbol</p>
+                    
                 </div>
                 <div>
-                    <p>companyName</p>
+                    <p>symbol</p>
                 </div>
                 <div>
                     <p>Price</p>

@@ -240,16 +240,24 @@ a{
   margin: 0 0.3rem;
 }
 
-.each-row-watchList{
+.each-row-watchList,
+.each-row-watchList-header{
   display: flex;
   width: 100%;
-  margin: 0 2rem;
+  margin: 0 9.5%;
 }
 
 .each-row-watchList div{
   border: solid gainsboro 1px;
   width: 8%;
-  
+}
+
+.each-row-watchList-header div{
+  border: none;
+  width: 8%;
+  text-align: center;
+  color: rgb(87, 86, 86);
+  margin: 1px;
 }
 
 .each-row-watchList button{
@@ -314,4 +322,36 @@ a{
 
 .search-form-addStock p{
   margin-top: 15%;
+}
+.chart-btn-myList button,
+.del-btn-myList button{
+  min-width: 60px;
+  height: 25px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: small;
+  font-weight: 500;
+}
+
+/* /chart btn */
+.chart-btn-myList button{
+  border: gainsboro solid 2px;
+  color: cornflowerblue;
+}
+
+.chart-btn-myList button:hover,
+.chart-btn-myList button:active{
+  border:none;
+  color:#24b37e;
+  font-weight: 600;
+}
+
+/* /delete btn */
+.del-btn-myList button{
+  background-color: rgb(245, 164, 164);
+}
+.del-btn-myList button:hover,
+.del-btn-myList button:active{
+  background-color: rgb(245, 77, 77);
 }
