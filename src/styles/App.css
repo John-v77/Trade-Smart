@@ -1,24 +1,23 @@
 /* /Media queries */
-a{
+a {
   text-decoration: none;
 }
 
-:root{
+:root {
   --main-color: #29ca8e;
 }
-
 
 .App {
   text-align: center;
 }
 
-.shadow{
-  box-shadow: 0 6px 1rem rgba(0,0,0,.1);
+.shadow {
+  box-shadow: 0 6px 1rem rgba(0, 0, 0, 0.1);
 }
 
 /* ------------------------Nav Bar -------------------------------- */
 
-.navBar{
+.navBar {
   border-top: 5px solid var(--main-color);
   background-color: white;
   height: 7vh;
@@ -28,10 +27,10 @@ a{
   align-items: center;
 }
 
-.navBar a{
+.navBar a {
   text-decoration: none;
   color: black;
-  padding: 25px 20px;
+  padding: 15px 20px;
   justify-content: center;
 
   /* background-color: transparent; */
@@ -39,49 +38,46 @@ a{
 
 .navBar a:hover,
 .navBar a:focus,
-.navBar a:active{
+.navBar a:active {
   background-color: var(--main-color);
   color: white;
   font-weight: 400;
-
 }
 
-.navBar img{
+.navBar img {
   width: 9%;
   height: 7vh;
 }
 /* ------------------------Nav Bar -------------------------------- */
 /* ------------------------------- -------------------------------- */
 
-
 /* ------------------------Home -------------------------------- */
 
-.home-hero img{
+.home-hero img {
   width: 80%;
   height: 30vh;
   margin-bottom: 0;
 }
 
-.home-hero{
+.home-hero {
   background-color: rgb(61, 61, 61);
 }
 
-.home-content{
+.home-content {
   width: 80%;
-  margin:0 10% 6rem;
+  margin: 0 10% 6rem;
   border: solid gainsboro;
-  border-width: 0  2px  0 2px;
-  
+  border-width: 0 2px 0 2px;
 }
 
-.home p{
+.home p {
   width: 40%;
   text-align: left;
   margin: 0 30%;
   font-size: 1.1rem;
 }
 
-.home p:first-child{
+.home p:first-child {
   margin-top: 6rem;
 }
 
@@ -89,15 +85,14 @@ a{
 
 /* \/-----------------------Stock Details ------------------------------\/ */
 
-.ChartSection{
+.ChartSection {
   margin-top: 4rem;
   display: flex;
 }
 
-
-.SearchForm{
+.SearchForm {
   width: 20%;
-  margin:0 7rem 0 10rem;
+  margin: 0 7rem 0 10rem;
   border: 1px solid lightgrey;
   border-radius: 0.3rem;
   box-shadow: 1px 1px 5px 0px rgba(92, 92, 92, 0.5);
@@ -105,14 +100,15 @@ a{
   /* border: 1px solid black; */
 }
 
-.SearchForm input, button{
+.SearchForm input,
+button {
   height: 2rem;
-  border:0;
+  border: 0;
   color: black;
   font-size: 1rem;
 }
 
-.SearchForm input[type=text]{
+.SearchForm input[type="text"] {
   width: 25%;
   /* height: 2rem; */
   background: rgb(240, 239, 239);
@@ -124,105 +120,102 @@ a{
   outline: rgb(2, 125, 248);
 } */
 
-.SearchForm button{
+.SearchForm button {
   /* height: 2rem; */
   border-radius: 0 0.5rem 0.5rem 0;
   background-color: var(--main-color);
-  
 }
 
-.SearchForm p{
+.SearchForm p {
   margin-top: 15%;
 }
 
-
-.Chart{
+.Chart {
   width: 50%;
   height: 500px;
-  border:1px solid gainsboro;
+  border: 1px solid gainsboro;
   border-radius: 0.25rem;
   box-shadow: 1px 1px 5px 0px rgba(92, 92, 92, 0.5);
 }
 
-.Chart p{
+.Chart p {
   color: blue;
   margin: 0;
-  padding-bottom:0.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.toolTip{
+.toolTip {
   width: 100%;
   color: rgb(100, 100, 100);
   padding: 1rem;
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
 }
 
-.toolTip div{
+.toolTip div {
   padding: 0 0.3rem;
 }
 
 /* /Fundamentals sections */
-#companyName{
+#companyName {
   text-align: left;
   margin: 5% 0 0 10.5%;
 }
 
-.fundamentals{
+.fundamentals {
   text-align: left;
   margin: 5% 0 0 3%;
   display: flex;
 }
 
-.fundamentals div{
+.fundamentals div {
   width: 15%;
   padding: 0 7%;
 }
 
-.fundamentals span{
+.fundamentals span {
   float: right;
   font-weight: 400;
 }
 
-.fundamentals p{
+.fundamentals p {
   font-weight: 500;
 }
 
 /* \/-----------------------News Section ------------------------------\/ */
 
-.news{
+.news {
   margin: 5rem 0 0 5rem;
-  display: flex;  
+  display: flex;
 }
 
-.news div{
+.news div {
   width: 22%;
   height: 35rem;
   margin: 0 3% 5%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 0.5rem 0.5rem 0  0;
+  border-radius: 0.5rem 0.5rem 0 0;
   text-align: left;
   padding: 1rem;
   overflow: hidden;
 }
 
-.news img{
+.news img {
   width: 100%;
   max-height: 20rem;
-  border-radius: 0.5rem 0.5rem 0  0;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.news p{
+.news p {
   font-size: 0.9rem;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   line-height: 1;
 }
 
-
 /* \/-----------------------News Section ------------------------------\/ */
 
-.footer{
+.footer {
   display: flex;
   justify-content: space-evenly;
   background-color: #333;
@@ -232,39 +225,34 @@ a{
   padding-right: 10%;
 }
 
-.footer a{
+.footer a {
   color: rgb(243, 243, 243);
 }
 
-
-.home{
+.home {
   min-height: 79.1vh;
 }
 
-.contact{
+.contact {
   min-height: 67.1vh;
 }
 
 .portfolio-page,
-.watch-list-component{
+.watch-list-component {
   min-height: 72.2vh;
 }
 
-
-
 /* \/-----------------------Watch List Component ------------------------------\/ */
 
-
 .watch-list-component h3,
-.portfolio-page h3{
+.portfolio-page h3 {
   margin-top: 4rem;
 }
-.top-bts-MyList{
+.top-bts-MyList {
   text-align: right;
 }
 
-
-.top-bts-MyList button{
+.top-bts-MyList button {
   height: 1.5rem;
   border-radius: 5px;
   color: #191a19;
@@ -276,29 +264,28 @@ a{
 }
 
 .top-bts-MyList button:hover,
-.top-bts-MyList button:active{
-  
+.top-bts-MyList button:active {
   color: white;
   background-color: #24b37e;
 }
 
 .each-row-watchList,
-.each-row-watchList-header{
+.each-row-watchList-header {
   display: flex;
   width: 90%;
-  margin-left:10%;
+  margin-left: 10%;
 }
 
-.each-row-watchList div{
+.each-row-watchList div {
   border: solid gainsboro 1px;
   width: 8%;
 }
 
-.each-row-watchList-header div:last-child{
+.each-row-watchList-header div:last-child {
   width: 9%;
 }
 
-.each-row-watchList-header div{
+.each-row-watchList-header div {
   border: none;
   width: 8%;
   text-align: center;
@@ -306,23 +293,22 @@ a{
   margin: 1px;
 }
 
-.each-row-watchList button{
+.each-row-watchList button {
   margin-top: 12%;
 }
 
 /* \/----------------------- Search Form Component ------------------------------\/ */
 
-.search-form-addStock input{
+.search-form-addStock input {
   width: 70%;
   height: 1.6rem;
   margin-top: 3rem;
 }
 
-
-.search-form-addStock{
+.search-form-addStock {
   width: 20%;
   height: 20rem;
-  margin:5% 35%;
+  margin: 5% 35%;
   border: 1px solid lightgrey;
   border-radius: 0.3rem;
   box-shadow: 1px 1px 5px 0px rgba(92, 92, 92, 0.5);
@@ -330,15 +316,15 @@ a{
   /* border: 1px solid black; */
 }
 
-.search-form-addStock input, button{
+.search-form-addStock input,
+button {
   height: 1.65rem;
-  border:0;
+  border: 0;
   color: rgb(51, 50, 50);
   font-size: 1rem;
 }
 
-
-.search-form-addStock input[type=text]{
+.search-form-addStock input[type="text"] {
   width: 45%;
   /* height: 2rem; */
   background: rgb(240, 239, 239);
@@ -350,24 +336,23 @@ a{
   outline: rgb(2, 125, 248);
 } */
 
-.search-form-addStock button{
+.search-form-addStock button {
   /* height: 2rem; */
   border-radius: 0 0.5rem 0.5rem 0;
   background-color: var(--main-color);
   color: aliceblue;
-  
 }
 
-.result-add-watchList button{
+.result-add-watchList button {
   border-radius: 0.5rem;
   width: 4.5rem;
 }
 
-.search-form-addStock p{
+.search-form-addStock p {
   margin-top: 15%;
 }
 .chart-btn-myList button,
-.del-btn-myList button{
+.del-btn-myList button {
   min-width: 60px;
   height: 25px;
   color: white;
@@ -378,62 +363,70 @@ a{
 }
 
 /* /chart btn */
-.chart-btn-myList button{
+.chart-btn-myList button {
   border: gainsboro solid 2px;
   color: cornflowerblue;
 }
 
 .chart-btn-myList button:hover,
-.chart-btn-myList button:active{
-  border:none;
-  color:#24b37e;
+.chart-btn-myList button:active {
+  border: none;
+  color: #24b37e;
   font-weight: 600;
 }
 
 /* /delete btn */
-.del-btn-myList button{
+.del-btn-myList button {
   background-color: rgb(245, 164, 164);
 }
 .del-btn-myList button:hover,
-.del-btn-myList button:active{
+.del-btn-myList button:active {
   background-color: rgb(245, 77, 77);
 }
 
 /* ^----------------------- Watch List Component -------------------------------^ */
-.portfolio-page{
+.portfolio-page {
   margin-left: 10%;
 }
-.portfolio-page h3{
+.portfolio-page h3 {
   text-align: center;
   margin-right: 16%;
   margin-bottom: 4rem;
 }
 /* \/----------------------- Contact ------------------------------\/ */
 
-.contact{
+.contact {
   width: 80%;
   margin: 0 10%;
   border: solid gainsboro;
   border-width: 0 2px 0 2px;
 }
 
-.contact div{
+.contact div {
   margin-top: 2rem;
   display: flex;
 }
 
-.contact div div{
+.contact div div {
   display: flex;
   flex-direction: column;
   width: 30%;
   text-align: left;
 }
 
-.contact div div:first-child{
+.contact div div:first-child {
   margin-left: 30%;
-  
 }
 
-.contact h3{
+.contact h3 {
   margin-top: 7rem;
+}
+
+#banner_desktop {
+  width: 30%;
+  margin-left: 35%;
+  text-align: center;
+  margin-top: 20px;
+  background-color: lightcoral;
+  padding-bottom: 2px;
 }
