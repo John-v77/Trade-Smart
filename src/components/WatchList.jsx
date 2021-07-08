@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { actions } from './auxComponents/APi';
+import { utilities } from './auxComponents/Utilities'
 
 function WatchList(props) {
 
@@ -55,14 +56,16 @@ function WatchList(props) {
         SetDisplayList(newArr)
     }
 
-    const changeColors = (changeInPrice) => {
-        return((changeInPrice < 0) ? "red" : "green")
-    }
+    // const changeColors = (changeInPrice) => {
+    //     return((changeInPrice < 0) ? "red" : "green")
+    // }
+
+
 
     const displayStocks = () =>{
         return displayList.map((eachItem, keyOfRow) => {
             
-            let numbersColor = changeColors(eachItem.change)
+            let numbersColor = utilities.changeColors(eachItem.change)
             return(
                 <div className="each-row-watchList"  key={keyOfRow}>
                     <div>
@@ -87,10 +90,10 @@ function WatchList(props) {
                         <p>{eachItem.week52High}$</p>
                     </div>
                     <div>
-                    <p style={{color:`${changeColors(eachItem.ytdChange)}`}}>{(eachItem.ytdChange*100).toFixed(2)}%</p>
+                    <p style={{color:`${utilities.changeColors(eachItem.ytdChange)}`}}>{(eachItem.ytdChange*100).toFixed(2)}%</p>
                     </div>
                     <div class="chart-btn-myList">
-                        <button onClick={() => deleteRow(eachItem.symbol)}>chart</button>
+                        <button onClick={() => utilities.displayChart(eachItem)}>chart</button>
                     </div>
                     <div class="del-btn-myList">
                         <button onClick={() => deleteRow(keyOfRow)} class="delete-Btn">
@@ -145,8 +148,12 @@ function WatchList(props) {
                     <button onClick={sortList}>Sort</button>
                 </div>
             </div>
+            <div>
                 {displayStocks()}
-
+            </div>
+            <div>
+                {utilities.displayChart()}
+            </div>
             
         </div>
         

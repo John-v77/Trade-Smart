@@ -24,9 +24,7 @@ function StockDetails(props) {
     const getStockDetails = (stockSymbol) => {
         axios.get(`https://cloud.iexapis.com/stable/stock/${stockSymbol}/quote?token=${token}`)
             .then(res => {
-                console.log(res.data)
                 setStock(res.data)
-                console.log(stock, typeof(stock), 'stock')
             })
             
     }
@@ -36,7 +34,6 @@ function StockDetails(props) {
         axios.get(`https://cloud.iexapis.com/stable/stock/${symbol}/${chartInterval}?token=${token}`)
             .then(res => 
                 {   
-                    // console.log(res.data)
                     setCharData(res.data)
                 })
     }
