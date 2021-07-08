@@ -233,11 +233,19 @@ a{
 .top-bts-MyList button{
   height: 1.5rem;
   border-radius: 5px;
-  color: white;
-  background-color: #24b37e;
+  color: #191a19;
+  background-color: whitesmoke;
+  border: #24b37e solid 2px;
   font-size: small;
   font-weight: 600;
   margin: 0 0.3rem;
+}
+
+.top-bts-MyList button:hover,
+.top-bts-MyList button:active{
+  
+  color: white;
+  background-color: #24b37e;
 }
 
 .each-row-watchList,
