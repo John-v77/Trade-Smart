@@ -67,13 +67,13 @@ function Chart(props) {
 
             />
           
-          <Tooltip
+          {data == null ? <Tooltip
             async content={<CustomToolTip/>}
             position={{ x: 680, y: 0 }}
             // viewBox={{ x: 0, y: 0 ,width: 400, height: 400}}
             // content={<CustomToolTip/>}
 
-            />
+            /> : null}
             <Legend 
               verticalAlign="top"
               align="left"

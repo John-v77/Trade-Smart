@@ -11,7 +11,8 @@ function StockDetails(props) {
     let[chartData, setCharData] = useState([])
     let[chartInterval, setChartInterval] = useState('intraday-prices') 
 
-    const token = 'pk_695271cfa88a4f01969c642eb1576b3f';
+    // const token = 'pk_695271cfa88a4f01969c642eb1576b3f';
+    const token = 'pk_c7b814fba9a24e41968fa5eb41f9a1d3';						
     const interval = 'intraday-prices'
 
     const chartOptions = {day:'intraday-prices', week:'5d', month:'1m', year:'1y', twoYears:'2y', fiveYears:'5y', yearToDate:'ytd'}
