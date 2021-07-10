@@ -78,10 +78,14 @@ function WatchList(props) {
                         <p style={{color:`${numbersColor}`}}>{eachItem.latestPrice}$</p>
                     </div>
                     <div>
-                        <p style={{color:`${numbersColor}`}}>{(eachItem.change).toFixed(2)}$</p>
+                        <p style={{color:`${numbersColor}`}}>{utilities.addPlusSign(eachItem.change)}
+                                                            {(eachItem.change).toFixed(2)}$
+                                                            </p>
                     </div>
                     <div> 
-                        <p style={{color:`${numbersColor}`}}>{(eachItem.changePercent*100).toFixed(2)}%</p>
+                        <p style={{color:`${numbersColor}`}}>{utilities.addPlusSign(eachItem.changePercent)}
+                                                            {(eachItem.changePercent).toFixed(2)}%
+                                                            </p>
                     </div>
                     <div>
                         <p>{eachItem.week52Low}$</p>
@@ -90,7 +94,9 @@ function WatchList(props) {
                         <p>{eachItem.week52High}$</p>
                     </div>
                     <div>
-                    <p style={{color:`${utilities.changeColors(eachItem.ytdChange)}`}}>{(eachItem.ytdChange*100).toFixed(2)}%</p>
+                    <p style={{color:`${utilities.changeColors(eachItem.ytdChange)}`}}>{utilities.addPlusSign(eachItem.ytdChange)}
+                                                                                        {(eachItem.ytdChange*100).toFixed(2)}%
+                                                                                        </p>
                     </div>
                     <div class="chart-btn-myList">
                         <button onClick={() => utilities.displayChart(eachItem)}>chart</button>

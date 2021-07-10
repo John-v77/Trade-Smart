@@ -8,6 +8,10 @@ export const utilities = {
         return((changeInPrice < 0) ? "red" : "green")
     },
 
+    addPlusSign : (changeInPrice) => {
+        return ((changeInPrice) > 0 ? "+" : null)
+    },
+
     // Displays chart based on company ticker
     displayChart : (stockSymbol) => {
         console.log(stockSymbol, 'stockSymbol')
