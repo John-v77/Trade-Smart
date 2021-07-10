@@ -7,7 +7,7 @@ function AddFormWatchList(props) {
   // if null is return - promt the user to choose a diferent one - current is incorrect
   //
   // if data is return the stock is added to the local storage
-  let message = "";
+  let [message, setMessage] = useState("");
   let [symbol, setSymbol] = useState([""]);
   let [symbolName, SetSymbolName] = useState("");
   const [stocksList, setStocksList] = useContext(StocksContext);
@@ -30,11 +30,11 @@ function AddFormWatchList(props) {
     //if the ticker exists will be added to the watch list
   };
 
-  const addStockToWatchList = async (e) => {
+  const addStockToWatchList = (e) => {
     e.preventDefault();
     setStocksList((curr) => [...curr, symbol]);
-    await localStorage.setItem("watchList", JSON.stringify(stocksList));
-    message = "Stock was added to the list";
+    localStorage.setItem("watchList", JSON.stringify(stocksList));
+    setMessage("Stock was added to the list");
   };
 
   return (
@@ -49,20 +49,13 @@ function AddFormWatchList(props) {
         <input type="text" onChange={recordValue} />
         <button>search</button>
       </form>
-      <br />
-      <br />
-      <br />
       <div className="result-add-watchList">
-        <div>
-          {symbolName}
-          {message}
-        </div>
+        <div className="symbol-msg">{symbolName}</div>
         <br />
         <button onClick={addStockToWatchList}>add</button>
+        <p className="confirm-msg"> {message}</p>
       </div>
-      <br />
-      <br />
-      <br />
+
       <Link to="/WatchList">go back</Link>
     </div>
   );
