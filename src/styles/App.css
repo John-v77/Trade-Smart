@@ -56,20 +56,33 @@ a{
 
 /* ------------------------Home -------------------------------- */
 
-.home img{
+.home-hero img{
   width: 80%;
-  height: 40vh;
-  /* padding-left: 10%; */
+  height: 30vh;
+  margin-bottom: 0;
 }
 
-.home div{
+.home-hero{
   background-color: rgb(61, 61, 61);
 }
 
+.home-content{
+  width: 80%;
+  margin:0 10% 6rem;
+  border: solid gainsboro;
+  border-width: 0  2px  0 2px;
+  
+}
+
 .home p{
-  width: 30%;
+  width: 40%;
   text-align: left;
-  margin: 10rem 35%;
+  margin: 0 30%;
+  font-size: 1.1rem;
+}
+
+.home p:first-child{
+  margin-top: 6rem;
 }
 /* ^-----------------------Home -------------------------------^ */
 
