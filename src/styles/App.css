@@ -376,3 +376,36 @@ a{
 .del-btn-myList button:active{
   background-color: rgb(245, 77, 77);
 }
+
+/* ^----------------------- Watch List Component -------------------------------^ */
+
+
+/* \/----------------------- Contact ------------------------------\/ */
+
+.contact{
+  width: 80%;
+  margin: 0 10%;
+  border: solid gainsboro;
+  border-width: 0 2px 0 2px;
+}
+
+.contact div{
+  margin-top: 2rem;
+  display: flex;
+}
+
+.contact div div{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  text-align: left;
+}
+
+.contact div div:first-child{
+  margin-left: 30%;
+  
+}
+
+.contact h3{
+  margin-top: 7rem;
+}
