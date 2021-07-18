@@ -11,7 +11,7 @@ function AddFormWatchList(props) {
   let [symbol, setSymbol] = useState([""]);
   let [symbolName, SetSymbolName] = useState("");
   const [stocksList, setStocksList] = useContext(StocksContext);
-
+  
   localStorage.setItem("watchList", JSON.stringify(stocksList));
 
   const recordValue = (e) => {
@@ -32,9 +32,11 @@ function AddFormWatchList(props) {
 
   const addStockToWatchList = (e) => {
     e.preventDefault();
-    setStocksList((curr) => [...curr, symbol]);
-    localStorage.setItem("watchList", JSON.stringify(stocksList));
-    setMessage("Stock was added to the list");
+    if(!stocksList.includes(symbol)){
+      setStocksList((curr) => [...curr, symbol]);
+      localStorage.setItem("watchList", JSON.stringify(stocksList));
+      setMessage("Stock was added to the list");
+    }
   };
 
   return (
