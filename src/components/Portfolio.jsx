@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react/cjs/react.development';
+import { utilities } from './auxComponents/Utilities';
 
 function Portfolio(props) {
     //list mock list
@@ -34,6 +35,7 @@ function Portfolio(props) {
 
     const displayStockz =()=>{
        return sortedList.map((eachItem,keyOfRow) => {
+           let numbersColor = utilities.changeColors(eachItem.change)
             return (
                 <div className="each-row-watchList" key={keyOfRow}>
                     <div>
@@ -43,25 +45,28 @@ function Portfolio(props) {
                         <p>{eachItem.symbol}</p>
                     </div>
                     <div>
-                        <p>{eachItem.latestPrice}$</p>
+                        <p style={{color:`${numbersColor}`}}>${eachItem.latestPrice}</p>
                     </div>
                     <div>
-                        <p>{(eachItem.change).toFixed(2)}$</p>
+                        <p style={{color:`${numbersColor}`}}>${(eachItem.change).toFixed(2)}</p>
                     </div>
                     <div> 
-                        <p>{(eachItem.changePercent*100).toFixed(2)}%</p>
+                        <p style={{color:`${numbersColor}`}}>{(eachItem.changePercent).toFixed(2)}%</p>
                     </div>
                     <div>
-                        <p>{eachItem.shares}</p>
+                        <p>{eachItem.shares} shares</p>
                     </div>
                     <div>
-                        <p>{(eachItem.aquisitionPrice).toFixed(2)}$</p>
+                        <p>${(eachItem.aquisitionPrice).toFixed(2)}</p>
                     </div>
                     <div>
-                        <p>{(eachItem.ytdChange*100).toFixed(2)}%</p>
+                        <p style={{color:`${utilities.changeColors((eachItem.ytdChange))}`}}>{utilities.addPlusSign(eachItem.ytdChange)}
+                                                                                                {(eachItem.ytdChange).toFixed(2)}%
+                                                                                                </p>
                     </div>
+
                     <div>
-                        <p>{((eachItem.latestPrice-eachItem.aquisitionPrice)*eachItem.shares).toFixed(2)}$</p>
+                        <p style={{color:`${utilities.changeColors((eachItem.latestPrice-eachItem.aquisitionPrice))}`, textAlign:'left', marginLeft:'20%'}}>${((eachItem.latestPrice-eachItem.aquisitionPrice)*eachItem.shares).toFixed(2)}</p>
                     </div>
                 </div>
             )
@@ -69,9 +74,9 @@ function Portfolio(props) {
     }
 
     return (
-        <div>
+        <div className='portfolio-page'>
             <h3>Work in progress</h3>
-            <button onClick={sortList}>Sort</button>
+            
             <div className="each-row-watchList-header">
                 <div>
                     
@@ -95,13 +100,14 @@ function Portfolio(props) {
                     <p>Aquisition Price</p>
                 </div>
                 <div>
-                    <p>Today's Profit</p>
+                    <p>Year to date change</p>
                 </div>
-                <div>
+                 <div>
                     <p>Total Profit</p>
                 </div>
             </div>
             {displayStockz()}
+            
         </div>
     );
 }
