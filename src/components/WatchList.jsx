@@ -1,83 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { actions } from "./auxComponents/APi";
 import { utilities } from "./auxComponents/Utilities";
+import { StocksContext } from "./auxComponents/StockContext";
 
 function WatchList(props) {
-  //list mock list
-  let mockList = [
-    {
-      companyName: "Tesla Inc",
-      symbol: "tsla",
-      change: -4.17,
-      changePercent: -0.55,
-      week52High: 900.4,
-      week52Low: 351.4,
-      ytdChange: 0.2195,
-      latestPrice: 751.9,
-    },
-    {
-      companyName: "Apple Inc",
-      symbol: "aapl",
-      change: -1.24,
-      changePercent: -0.85,
-      week52High: 157.1,
-      week52Low: 103.1,
-      ytdChange: 0.1835,
-      latestPrice: 147.79,
-    },
-    {
-      companyName: "Macys Inc",
-      symbol: "m",
-      change: 4.17,
-      changePercent: 0.55,
-      week52High: 900.4,
-      week52Low: 351.4,
-      ytdChange: 0.2195,
-      latestPrice: 751.9,
-    },
-    {
-      companyName: "United Steel Inc",
-      symbol: "x",
-      change: -4.17,
-      changePercent: -0.55,
-      week52High: 900.4,
-      week52Low: 351.4,
-      ytdChange: 0.2195,
-      latestPrice: 751.9,
-    },
-    {
-      companyName: "Zillow",
-      symbol: "z",
-      change: 4.17,
-      changePercent: 0.55,
-      week52High: 900.4,
-      week52Low: 351.4,
-      ytdChange: 0.2195,
-      latestPrice: 751.9,
-    },
-  ];
+  
   const storageList = async () => {
     let res = await localStorage.getItem("watchList");
     if (!res) {
-      res = [];
+      res = ['x','tsla','x'];
     } else {
       res = JSON.parse(res);
     }
     return res;
   };
-  //   const storageList = JSON.parse(localStorage.getItem("watchList"))
-  //     ? JSON.parse(localStorage.getItem("watchList"))
-  //     : ["appl"];
-  let [displayList, SetDisplayList] = useState(mockList);
-  // let [sortBtn, setSortBtn] = useState(false);
+
+  const [stocksList, setStocksList] = useContext(StocksContext)
+  let [displayList, SetDisplayList] = useState([]);
+  let [sortBtn, setSortBtn] = useState(false);
+
+
 
   const buildList = async () => {
     let stocks = await storageList();
+    setStocksList(stocks)
+    console.log(stocks, '1st step stock list')
 
     stocks.map((eachItem) => {
+
+
+      //check if there are duplicates
+      if(displayList.some(company => company.symbol === eachItem)){
+        return
+      }
+
+
       actions.getStockName(eachItem).then((res) => {
-        let newArr = [...displayList];
+        // let newArr = [...displayList];
         //It gets the information from res.data
         const {
           companyName,
@@ -90,7 +50,22 @@ function WatchList(props) {
           latestPrice,
         } = res.data;
         //Creates an object and pushes it in the new newArr
-        newArr.push({
+
+        // newArr.push({
+        //   companyName,
+        //   symbol,
+        //   change,
+        //   changePercent,
+        //   week52High,
+        //   week52Low,
+        //   ytdChange,
+        //   latestPrice,
+        // });
+        // console.log(newArr, "doulbe API");
+        //after the object is been pushed it sets the display list, witch is the list use for rendering
+
+
+        SetDisplayList((curr) => [...curr, {
           companyName,
           symbol,
           change,
@@ -99,10 +74,7 @@ function WatchList(props) {
           week52Low,
           ytdChange,
           latestPrice,
-        });
-        console.log(newArr, "doulbe API");
-        //after the object is been pushed it sets the display list, witch is the list use for rendering
-        SetDisplayList(newArr);
+        }]);
       });
     });
   };
@@ -111,30 +83,30 @@ function WatchList(props) {
     buildList();
   }, []);
 
-  //this works as expected\
+  // this works as expected
 
-  // const sortList = () => {
-  //   let newArr = [...displayList];
-  //   if (sortBtn === false) {
-  //     newArr.sort((a, b) => a.changePercent - b.changePercent);
-  //     SetDisplayList(newArr);
-  //     setSortBtn(true);
-  //   } else if (sortBtn === true) {
-  //     newArr.sort((a, b) => b.changePercent - a.changePercent);
-  //     SetDisplayList(newArr);
-  //     setSortBtn(false);
-  //   }
-  // };
+  const sortList = () => {
+    let newArr = [...displayList];
+    if (sortBtn === false) {
+      newArr.sort((a, b) => a.changePercent - b.changePercent);
+      SetDisplayList(newArr);
+      setSortBtn(true);
+    } else if (sortBtn === true) {
+      newArr.sort((a, b) => b.changePercent - a.changePercent);
+      SetDisplayList(newArr);
+      setSortBtn(false);
+    }
+  };
 
-  // const deleteRow = (keyOfRow) => {
-  //   let newArr = [...displayList];
-  //   newArr.splice(keyOfRow, 1);
-  //   SetDisplayList(newArr);
-  // };
+  const deleteRow = (keyOfRow) => {
+    let newArr = [...displayList];
+    newArr.splice(keyOfRow, 1);
+    SetDisplayList(newArr);
+  };
 
-  // const changeColors = (changeInPrice) => {
-  //     return((changeInPrice < 0) ? "red" : "green")
-  // }
+  const changeColors = (changeInPrice) => {
+      return((changeInPrice < 0) ? "red" : "green")
+  }
 
   const displayStocks = () => {
     return displayList.map((eachItem, keyOfRow) => {
@@ -182,9 +154,9 @@ function WatchList(props) {
             </button>
           </div>
           <div class="del-btn-myList">
-            {/* <button onClick={() => deleteRow(keyOfRow)} class="delete-Btn">
+            <button onClick={() => deleteRow(keyOfRow)} class="delete-Btn">
               delete
-            </button> */}
+            </button>
           </div>
         </div>
       );
@@ -229,7 +201,7 @@ function WatchList(props) {
             <button>Add Stock</button>
           </Link>
 
-          {/* <button onClick={sortList}>Sort</button> */}
+          <button onClick={sortList}>Sort</button>
         </div>
       </div>
       <div>{displayStocks()}</div>
