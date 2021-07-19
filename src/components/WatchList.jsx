@@ -17,7 +17,7 @@ function WatchList(props) {
   };
 
   const [stocksList, setStocksList] = useContext(StocksContext)
-  let [displayList, SetDisplayList] = useState([]);
+  let [displayList, setDisplayList] = useState([]);
   let [sortBtn, setSortBtn] = useState(false);
 
 
@@ -25,8 +25,7 @@ function WatchList(props) {
   const buildList = async () => {
     let stocks = await storageList();
     setStocksList(stocks)
-    console.log(stocks, '1st step stock list')
-
+ 
     stocks.map((eachItem) => {
 
 
@@ -49,23 +48,8 @@ function WatchList(props) {
           ytdChange,
           latestPrice,
         } = res.data;
-        //Creates an object and pushes it in the new newArr
 
-        // newArr.push({
-        //   companyName,
-        //   symbol,
-        //   change,
-        //   changePercent,
-        //   week52High,
-        //   week52Low,
-        //   ytdChange,
-        //   latestPrice,
-        // });
-        // console.log(newArr, "doulbe API");
-        //after the object is been pushed it sets the display list, witch is the list use for rendering
-
-
-        SetDisplayList((curr) => [...curr, {
+        setDisplayList((curr) => [...curr, {
           companyName,
           symbol,
           change,
@@ -89,11 +73,11 @@ function WatchList(props) {
     let newArr = [...displayList];
     if (sortBtn === false) {
       newArr.sort((a, b) => a.changePercent - b.changePercent);
-      SetDisplayList(newArr);
+      setDisplayList(newArr);
       setSortBtn(true);
     } else if (sortBtn === true) {
       newArr.sort((a, b) => b.changePercent - a.changePercent);
-      SetDisplayList(newArr);
+      setDisplayList(newArr);
       setSortBtn(false);
     }
   };
@@ -101,7 +85,10 @@ function WatchList(props) {
   const deleteRow = (keyOfRow) => {
     let newArr = [...displayList];
     newArr.splice(keyOfRow, 1);
-    SetDisplayList(newArr);
+    setDisplayList(newArr);
+    
+    let contexList = newArr.map(each => each.symbol)
+    setStocksList(contexList)
   };
 
   const changeColors = (changeInPrice) => {
