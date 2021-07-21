@@ -17,7 +17,6 @@ function Home(props) {
                     <ul>And a Third one for Displaying the stock Details</ul>
                 </p>
             </div>   
-            <Footer/>
         </div>
     );
 }

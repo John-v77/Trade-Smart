@@ -84,6 +84,7 @@ a{
 .home p:first-child{
   margin-top: 6rem;
 }
+
 /* ^-----------------------Home -------------------------------^ */
 
 /* \/-----------------------Stock Details ------------------------------\/ */
@@ -220,6 +221,7 @@ a{
 
 
 /* \/-----------------------News Section ------------------------------\/ */
+
 .footer{
   display: flex;
   justify-content: space-evenly;
@@ -235,9 +237,28 @@ a{
 }
 
 
+.home{
+  min-height: 79.1vh;
+}
+
+.contact{
+  min-height: 67.1vh;
+}
+
+.portfolio-page,
+.watch-list-component{
+  min-height: 72.2vh;
+}
+
+
 
 /* \/-----------------------Watch List Component ------------------------------\/ */
 
+
+.watch-list-component h3,
+.portfolio-page h3{
+  margin-top: 4rem;
+}
 .top-bts-MyList{
   text-align: right;
 }
@@ -264,13 +285,17 @@ a{
 .each-row-watchList,
 .each-row-watchList-header{
   display: flex;
-  width: 100%;
-  margin: 0 9.5%;
+  width: 90%;
+  margin-left:10%;
 }
 
 .each-row-watchList div{
   border: solid gainsboro 1px;
   width: 8%;
+}
+
+.each-row-watchList-header div:last-child{
+  width: 9%;
 }
 
 .each-row-watchList-header div{
@@ -285,16 +310,13 @@ a{
   margin-top: 12%;
 }
 
-/* \/----------------------- Watch List Component ------------------------------\/ */
+/* \/----------------------- Search Form Component ------------------------------\/ */
 
 .search-form-addStock input{
   width: 70%;
   height: 1.6rem;
   margin-top: 3rem;
 }
-
-
-
 
 
 .search-form-addStock{
@@ -378,8 +400,14 @@ a{
 }
 
 /* ^----------------------- Watch List Component -------------------------------^ */
-
-
+.portfolio-page{
+  margin-left: 10%;
+}
+.portfolio-page h3{
+  text-align: center;
+  margin-right: 16%;
+  margin-bottom: 4rem;
+}
 /* \/----------------------- Contact ------------------------------\/ */
 
 .contact{

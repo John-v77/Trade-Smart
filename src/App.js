@@ -8,6 +8,7 @@ import StockDetails from './components/StockDetails';
 import Contact from './components/Contact';
 import AddFormWatchList from './components/auxComponents/AddFormWatchList';
 import { ContextProvider} from './components/auxComponents/StockContext';
+import Footer from './components/auxComponents/Footer';
 
 
 function App() {
@@ -23,10 +24,11 @@ function App() {
         <Route exact path='/Contact' render={(props) => <Contact {...props}/>}/>
         <Route exact path='/Search-WatchList' render={(props) => <AddFormWatchList {...props}/>}/>
       </Switch>
+      <Footer/>
       </div>
 
     </ContextProvider> 
-
+  
   );
 }
 
