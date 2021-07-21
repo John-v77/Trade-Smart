@@ -3,7 +3,6 @@ import axios from 'axios';
 // import {getStockDetails, getStockChartData, handleChange, getData} from './utils';
 import Chart from './Chart.js'
 import News from './auxComponents/News.jsx';
-import Footer from './auxComponents/Footer.jsx';
 function StockDetails(props) {
 
     let[stockSearched, setStockSearched] = useState('')
@@ -142,7 +141,7 @@ function StockDetails(props) {
             <h2 id='companyName'>News</h2>
             <News/>
             <div>
-                <Footer/>
+                
             </div>
         </div>
     );
