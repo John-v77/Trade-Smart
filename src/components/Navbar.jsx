@@ -7,7 +7,6 @@ function Navbar(props) {
         <div className="navBar shadow">
             <img src={logo} alt='logo'/>
             <Link to='/'>Home</Link>
-            <Link to='/Portfolio'>Portfolio</Link>
             <Link to='/WatchList'>Watch List</Link>
             <Link to='/StockDetails'>StockDetails</Link>           
             <Link to='/Contact'>Contact</Link>

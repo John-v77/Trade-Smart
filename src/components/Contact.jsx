@@ -16,7 +16,7 @@ function Contact(props) {
                     <a href="https://github.com/John-v77"><p>Git-hub</p></a>
                     <a href="https://www.codewars.com/users/Johnv77"><p>Code-Wars</p></a>
                     <a href="https://www.hackerrank.com/John_Vasile"><p>Hacker-Rank</p></a>
-                    <a href="https://linkedin.com/in/johnwasile"><p>Linked-In</p></a>
+                    <a href="https://linkedin.com/in/johnvasile"><p>Linked-In</p></a>
                 </div>
             </div>
         </div>
