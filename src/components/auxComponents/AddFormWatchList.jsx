@@ -11,6 +11,9 @@ function AddFormWatchList(props) {
     let [symbol, setSymbol] = useState([''])
     let [symbolName, SetSymbolName] = useState('')
     const [stocksList, setStocksList] = useContext(StocksContext);
+
+    localStorage.setItem('watchList', JSON.stringify(stocksList))
+    
     const recordValue = (e) =>{
         setSymbol(e.target.value)
     }
@@ -29,9 +32,9 @@ function AddFormWatchList(props) {
         }
     }
 
-    const addStockToWatchList =(e)=> {
+    const addStockToWatchList = async (e)=>{
         setStocksList(curr => [...curr, symbol])
-        localStorage.setItem('watchList', JSON.stringify(stocksList))
+        await localStorage.setItem('watchList', JSON.stringify(stocksList))
     }
 
 
