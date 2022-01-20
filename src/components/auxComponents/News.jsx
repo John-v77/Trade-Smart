@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
-import getNews from './APi.js'
+import { actions } from "./APi";
 function News(props) {
     
     let[news, setNews] = useState([])
     let symbol ='SPY'
-    // const token ='pk_695271cfa88a4f01969c642eb1576b3f'
-    const token = 'pk_c7b814fba9a24e41968fa5eb41f9a1d3';
-    
-    
-    // let arr = getNews()
-    // console.log(arr, 'arr')
 
     useEffect(() => {
-        axios.get(`https://cloud.iexapis.com/stable/stock/${symbol}/news/last/{last}?token=${token}`)
+        let isMounted = true
+        
+        // fetch news about the stock
+        actions.getStockNews(symbol)
             .then(res => {  
-                console.log('data',res.data.slice(0, 3));
                 setNews(res.data.slice(0, 3))})
+        
+        return(()=> isMounted = false)        
     },[])
 
     // console.log(news, 'news')
@@ -24,11 +21,11 @@ function News(props) {
     const displayNews = () =>{
         let image
         // console.log('news', newArr);
-       return news.map(element => {
+       return news.map((element, index) => {
            image = element.image
            return(
 
-                <div>
+                <div key={index}>
                     <img src={image} alt='news image'/>
                     <h5>{element.headline}</h5>
                     <p>{element.summary}</p>
