@@ -64,7 +64,9 @@ function WatchList(props) {
   };
 
   useEffect(() => {
+    let isMounted = true
     buildList();
+    return(()=> isMounted = false)
   }, []);
 
   // this works as expected
@@ -91,9 +93,6 @@ function WatchList(props) {
     setStocksList(contexList)
   };
 
-  const changeColors = (changeInPrice) => {
-      return((changeInPrice < 0) ? "red" : "green")
-  }
 
   const displayStocks = () => {
     return displayList.map((eachItem, keyOfRow) => {
@@ -135,13 +134,13 @@ function WatchList(props) {
               {(eachItem.ytdChange * 100).toFixed(2)}%
             </p>
           </div>
-          <div class="chart-btn-myList">
+          <div className="chart-btn-myList">
             <button onClick={() => utilities.displayChart(eachItem)}>
               chart
             </button>
           </div>
-          <div class="del-btn-myList">
-            <button onClick={() => deleteRow(keyOfRow)} class="delete-Btn">
+          <div className="del-btn-myList">
+            <button onClick={() => deleteRow(keyOfRow)} className="delete-Btn">
               delete
             </button>
           </div>
@@ -154,7 +153,7 @@ function WatchList(props) {
     <div className="watch-list-component">
       <h3>My List</h3>
 
-      {/* <div class="top-bts-MyList">
+      {/* <div className="top-bts-MyList">
                 
             </div> */}
       <div className="each-row-watchList-header">
@@ -169,16 +168,16 @@ function WatchList(props) {
           <p>change</p>
         </div>
         <div>
-          <p>changePercent</p>
+          <p>change %</p>
         </div>
         <div>
-          <p>week52Low</p>
+          <p>52weeks<br/>Low</p>
         </div>
         <div>
-          <p>week52High</p>
+          <p>52weeks<br/>High</p>
         </div>
         <div>
-          <p>ytdChange</p>
+          <p>year-to-date<br/>Change</p>
         </div>
         <div>
           <p>chart</p>

@@ -3,6 +3,7 @@ import axios from 'axios';
 // import {getStockDetails, getStockChartData, handleChange, getData} from './utils';
 import Chart from './Chart.js'
 import News from './auxComponents/News.jsx';
+
 function StockDetails(props) {
 
     let[stockSearched, setStockSearched] = useState('')
@@ -10,8 +11,9 @@ function StockDetails(props) {
     let[chartData, setCharData] = useState([])
     let[chartInterval, setChartInterval] = useState('intraday-prices') 
 
-    // const token = 'pk_695271cfa88a4f01969c642eb1576b3f';
-    const token = 'pk_c7b814fba9a24e41968fa5eb41f9a1d3';						
+    const token = process.env.REACT_APP_TOKEN1
+    const link = process.env.REACT_APP_LINK			
+
     const interval = 'intraday-prices'
 
     const chartOptions = {day:'intraday-prices', week:'5d', month:'1m', year:'1y', twoYears:'2y', fiveYears:'5y', yearToDate:'ytd'}
@@ -22,7 +24,7 @@ function StockDetails(props) {
     // }
 
     const getStockDetails = (stockSymbol) => {
-        axios.get(`https://cloud.iexapis.com/stable/stock/${stockSymbol}/quote?token=${token}`)
+        axios.get(link + `${stockSymbol}/quote?token=${token}`)
             .then(res => {
                 setStock(res.data)
             })
@@ -47,7 +49,6 @@ function StockDetails(props) {
 
     const handleChange =(e)=> {
         let val = e.target.value
-        console.log(e.target.value)
         setStockSearched(val)
     }
 
@@ -72,11 +73,12 @@ function StockDetails(props) {
   };
 
      useEffect(() => {
+        let isMounted = true
          //defauld value
         getStockChartData('SPY')
         getStockDetails('SPY')
-        // setChartInterval(chartOptions.fiveYears)
-        // console.log(chartInterval, 'hh')    
+        
+        return(()=> isMounted = false)
      }, []);
 
 
