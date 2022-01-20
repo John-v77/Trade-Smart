@@ -32,7 +32,7 @@ a {
 .navBar a {
   text-decoration: none;
   color: black;
-  padding: 15px 20px;
+  padding: 1.25rem 20px;
   justify-content: center;
 
   /* background-color: transparent; */
@@ -445,11 +445,25 @@ button {
   margin-top: 7rem;
 }
 
-#banner_desktop {
+#banner_mobile {
+  display: none;
   width: 30%;
   margin-left: 35%;
   text-align: center;
   margin-top: 20px;
   background-color: lightcoral;
   padding-bottom: 2px;
+}
+
+
+@media only screen and (max-width: 1159px){
+  #banner_mobile {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1600px){
+  .navBar a {
+    padding: 1.4rem 20px;
+   }
 }

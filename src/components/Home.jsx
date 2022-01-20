@@ -1,6 +1,6 @@
 import React from "react";
 import MainPicture from "../images/mainPic.jpg";
-import Footer from "./auxComponents/Footer";
+
 
 function Home(props) {
   return (
@@ -8,7 +8,7 @@ function Home(props) {
       <div className="home-hero">
         <img src={MainPicture} alt="chart" />
       </div>
-      <section id="banner_desktop">
+      <section id="banner_mobile">
         {" "}
         This aplication is optimized for a desktop experience
       </section>
