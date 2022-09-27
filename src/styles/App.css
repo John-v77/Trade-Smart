@@ -244,6 +244,11 @@ button {
   min-height: 72.2vh;
 }
 
+.watchList-table{
+  margin: auto;
+  width: 60%;
+}
+
 /* \/-----------------------Watch List Component ------------------------------\/ */
 
 .watch-list-component h3,
@@ -251,10 +256,14 @@ button {
   margin-top: 4rem;
 }
 .top-bts-MyList {
-  text-align: right;
+  padding-top: 2rem;
+  padding-left: 0;
+  
+  /* text-align: right; */
 }
 
-.top-bts-MyList button {
+.bot-btn-MyList,
+.top-bts-MyList_buttons {
   height: 1.5rem;
   border-radius: 5px;
   color: #191a19;
@@ -262,34 +271,45 @@ button {
   border: #24b37e solid 2px;
   font-size: small;
   font-weight: 600;
-  margin: 0 0.3rem;
 }
 
-.top-bts-MyList button:hover,
-.top-bts-MyList button:active {
+
+.bot-bts-MyList {
+  display: flex;
+  justify-content: end;
+}
+
+
+.bot-btn-MyList:hover,
+.bot-btn-MyList:active,
+.top-bts-MyList_buttons:hover,
+.top-bts-MyList_buttons:active {
   color: white;
   background-color: #24b37e;
+}
+
+.bot-btn-MyList {
+  margin-top: 1rem;
+  margin-right: 7.4rem;
+  text-align: right;
+
 }
 
 .each-row-watchList,
 .each-row-watchList-header {
   display: flex;
   width: 90%;
-  margin-left: 10%;
 }
 
 .each-row-watchList div {
   border: solid gainsboro 1px;
-  width: 8%;
+  width: 8.5rem;
 }
 
-.each-row-watchList-header div:last-child {
-  width: 9%;
-}
 
 .each-row-watchList-header div {
   border: none;
-  width: 8%;
+  width: 8.5rem;
   text-align: center;
   color: rgb(87, 86, 86);
   margin: 1px;

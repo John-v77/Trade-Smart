@@ -1,39 +1,33 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { actions } from "./auxComponents/APi";
-import { utilities } from "./auxComponents/Utilities";
-import { StocksContext } from "./auxComponents/StockContext";
+import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { actions } from './auxComponents/APi';
+import { utilities } from './auxComponents/Utilities';
+import { StocksContext } from './auxComponents/StockContext';
 
 function WatchList(props) {
-  
   const storageList = async () => {
-    let res = await localStorage.getItem("watchList");
+    let res = await localStorage.getItem('watchList');
     if (!res) {
-      res = ['x','tsla','x'];
+      res = ['x', 'tsla', 'm'];
     } else {
       res = JSON.parse(res);
     }
     return res;
   };
 
-  const [stocksList, setStocksList] = useContext(StocksContext)
+  const [stocksList, setStocksList] = useContext(StocksContext);
   let [displayList, setDisplayList] = useState([]);
   let [sortBtn, setSortBtn] = useState(false);
 
-
-
   const buildList = async () => {
     let stocks = await storageList();
-    setStocksList(stocks)
- 
+    setStocksList(stocks);
+
     stocks.map((eachItem) => {
-
-
       //check if there are duplicates
-      if(displayList.some(company => company.symbol === eachItem)){
-        return
+      if (displayList.some((company) => company.symbol === eachItem)) {
+        return;
       }
-
 
       actions.getStockName(eachItem).then((res) => {
         // let newArr = [...displayList];
@@ -49,24 +43,27 @@ function WatchList(props) {
           latestPrice,
         } = res.data;
 
-        setDisplayList((curr) => [...curr, {
-          companyName,
-          symbol,
-          change,
-          changePercent,
-          week52High,
-          week52Low,
-          ytdChange,
-          latestPrice,
-        }]);
+        setDisplayList((curr) => [
+          ...curr,
+          {
+            companyName,
+            symbol,
+            change,
+            changePercent,
+            week52High,
+            week52Low,
+            ytdChange,
+            latestPrice,
+          },
+        ]);
       });
     });
   };
 
   useEffect(() => {
-    let isMounted = true
+    let isMounted = true;
     buildList();
-    return(()=> isMounted = false)
+    return () => (isMounted = false);
   }, []);
 
   // this works as expected
@@ -88,17 +85,16 @@ function WatchList(props) {
     let newArr = [...displayList];
     newArr.splice(keyOfRow, 1);
     setDisplayList(newArr);
-    
-    let contexList = newArr.map(each => each.symbol)
-    setStocksList(contexList)
-  };
 
+    let contexList = newArr.map((each) => each.symbol);
+    setStocksList(contexList);
+  };
 
   const displayStocks = () => {
     return displayList.map((eachItem, keyOfRow) => {
       let numbersColor = utilities.changeColors(eachItem.change);
       return (
-        <div className="each-row-watchList" key={keyOfRow}>
+        <div className='each-row-watchList' key={keyOfRow}>
           <div>
             <p>{eachItem.companyName}</p>
           </div>
@@ -134,13 +130,13 @@ function WatchList(props) {
               {(eachItem.ytdChange * 100).toFixed(2)}%
             </p>
           </div>
-          <div className="chart-btn-myList">
+          {/* <div className="chart-btn-myList">
             <button onClick={() => utilities.displayChart(eachItem)}>
               chart
             </button>
-          </div>
-          <div className="del-btn-myList">
-            <button onClick={() => deleteRow(keyOfRow)} className="delete-Btn">
+          </div> */}
+          <div className='del-btn-myList'>
+            <button onClick={() => deleteRow(keyOfRow)} className='delete-Btn'>
               delete
             </button>
           </div>
@@ -150,48 +146,65 @@ function WatchList(props) {
   };
 
   return (
-    <div className="watch-list-component">
+    <div className='watch-list-component'>
       <h3>My List</h3>
 
       {/* <div className="top-bts-MyList">
                 
             </div> */}
-      <div className="each-row-watchList-header">
-        <div></div>
-        <div>
-          <p>symbol</p>
-        </div>
-        <div>
-          <p>Price</p>
-        </div>
-        <div>
-          <p>change</p>
-        </div>
-        <div>
-          <p>change %</p>
-        </div>
-        <div>
-          <p>52weeks<br/>Low</p>
-        </div>
-        <div>
-          <p>52weeks<br/>High</p>
-        </div>
-        <div>
-          <p>year-to-date<br/>Change</p>
-        </div>
-        <div>
+      <div className='watchList-table'>
+        <div className='each-row-watchList-header'>
+          <div></div>
+          <div>
+            <p>symbol</p>
+          </div>
+          <div>
+            <p>Price</p>
+          </div>
+          <div>
+            <p>change</p>
+          </div>
+          <div>
+            <p>change %</p>
+          </div>
+          <div>
+            <p>
+              52weeks
+              <br />
+              Low
+            </p>
+          </div>
+          <div>
+            <p>
+              52weeks
+              <br />
+              High
+            </p>
+          </div>
+          <div>
+            <p>
+              year-to-date
+              <br />
+              Change
+            </p>
+          </div>
+          {/* <div>
           <p>chart</p>
+        </div> */}
+          <div className='top-bts-MyList'>
+            <Link to='/Search-WatchList'>
+              <button className='top-bts-MyList_buttons'>Add Stock</button>
+            </Link>
+          </div>
         </div>
-        <div className="top-bts-MyList">
-          <Link to="/Search-WatchList">
-            <button>Add Stock</button>
-          </Link>
-
-          <button onClick={sortList}>Sort</button>
+        <div>{displayStocks()}</div>
+        <div className='bot-bts-MyList'>
+          <button className='bot-btn-MyList' onClick={sortList}>
+            Sort by change
+          </button>
         </div>
       </div>
-      <div>{displayStocks()}</div>
-      <div>{utilities.displayChart()}</div>
+      {/* <div>{utilities.displayChart()}</div> */}
     </div>
   );
 }
