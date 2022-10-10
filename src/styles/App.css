@@ -9,10 +9,13 @@ a {
 
 .App {
   text-align: center;
+  max-width: 95rem;
+  margin: auto;
+  background-color: white;
 }
 
 .shadow {
-  box-shadow: 0 6px 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
 }
 
 /* ------------------------Nav Bar -------------------------------- */
@@ -20,44 +23,49 @@ a {
 .navBar {
   border-top: 5px solid var(--main-color);
   background-color: white;
-  height: 7vh;
-  margin-bottom: 0;
-  padding-left: 15%;
+  height: 60px;
+  padding-left: 2rem;
   display: flex;
-  align-items: center;
+  align-items: space;
+  justify-content: space-between;
   position: sticky;
   top: 0;
+  left: 0;
+  z-index: 10;
 }
 
-.navBar a {
-  text-decoration: none;
+.navBarLinks {
+  display: flex;
+  margin-right: 2rem;
+}
+
+.navBarLinks a {
+  display: block;
+  padding: 20px 20px 19px;
   color: black;
-  padding: 1.25rem 20px;
   justify-content: center;
-
-  /* background-color: transparent; */
 }
 
-.navBar a:hover,
-.navBar a:focus,
-.navBar a:active {
+.navBarLinks a:hover,
+.navBarLinks a:focus,
+.navBarLinks a:active {
   background-color: var(--main-color);
   color: white;
   font-weight: 400;
 }
 
 .navBar img {
-  width: 9%;
-  height: 7vh;
+  width: 6rem;
+  height: 100%;
 }
+
 /* ------------------------Nav Bar -------------------------------- */
 /* ------------------------------- -------------------------------- */
 
 /* ------------------------Home -------------------------------- */
 
-.home-hero img {
-  width: 80%;
-  height: 30vh;
+.home-hero-pic img {
+  width: 100%;
   margin-bottom: 0;
 }
 
@@ -244,7 +252,7 @@ button {
   min-height: 72.2vh;
 }
 
-.watchList-table{
+.watchList-table {
   margin: auto;
   width: 60%;
 }
@@ -255,10 +263,11 @@ button {
 .portfolio-page h3 {
   margin-top: 4rem;
 }
+
 .top-bts-MyList {
   padding-top: 2rem;
   padding-left: 0;
-  
+
   /* text-align: right; */
 }
 
@@ -388,12 +397,14 @@ button {
   justify-content: center;
   margin-bottom: 3rem;
 }
+
 .confirm-msg {
   display: flex;
   justify-content: center;
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }
+
 .chart-btn-myList button,
 .del-btn-myList button {
   min-width: 60px;
@@ -422,6 +433,7 @@ button {
 .del-btn-myList button {
   background-color: rgb(245, 164, 164);
 }
+
 .del-btn-myList button:hover,
 .del-btn-myList button:active {
   background-color: rgb(245, 77, 77);
@@ -431,11 +443,13 @@ button {
 .portfolio-page {
   margin-left: 10%;
 }
+
 .portfolio-page h3 {
   text-align: center;
   margin-right: 16%;
   margin-bottom: 4rem;
 }
+
 /* \/----------------------- Contact ------------------------------\/ */
 
 .contact {
@@ -476,14 +490,14 @@ button {
 }
 
 
-@media only screen and (max-width: 1159px){
+@media only screen and (max-width: 1159px) {
   #banner_mobile {
     display: block;
   }
 }
 
-@media only screen and (min-width: 1600px){
+@media only screen and (min-width: 1600px) {
   .navBar a {
     padding: 1.4rem 20px;
-   }
+  }
 }
