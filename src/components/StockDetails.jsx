@@ -26,13 +26,13 @@ function StockDetails(props) {
     yearToDate: 'ytd',
   };
 
-  // const changeChart =(param)=>{
-  //     e.preventDefault()
-  //     setChartInterval(param)
-  // }
+
 
   const getStockDetails = (stockSymbol) => {
-    axios.get(link + `${stockSymbol}/quote?token=${token}`).then((res) => {
+    axios.get(link + `${stockSymbol}/quote?token=${token}`)
+      .then((res) => {
+        
+        console.log(res, 'ssss11jjk');
       setStock(res.data);
     });
   };
@@ -43,7 +43,6 @@ function StockDetails(props) {
         `https://cloud.iexapis.com/stable/stock/${symbol}/${chartInterval}?token=${token}`
       )
       .then((res) => {
-        console.log(res, 'ssss');
         setCharData(res.data);
       });
   };
@@ -67,20 +66,6 @@ function StockDetails(props) {
     e.preventDefault();
     getStockChartData(stockSearched);
     getStockDetails(stockSearched);
-  };
-
-  // Function that iterates throug the Quote Array and prints every key
-  const displayData = () => {
-    return Object.keys(stock).map((eachItem) => {
-      // console.log(eachItem)
-      return (
-        <div>
-          <li>
-            {eachItem} : {stock[eachItem]}
-          </li>
-        </div>
-      );
-    });
   };
 
   useEffect(() => {
