@@ -3,6 +3,7 @@ import axios from 'axios';
 // import {getStockDetails, getStockChartData, handleChange, getData} from './utils';
 import Chart from './Chart.js';
 import News from './auxComponents/News.jsx';
+import StockStats from './stockFundamentals/StockStats.component.jsx';
 
 function StockDetails(props) {
   let [stockSearched, setStockSearched] = useState('');
@@ -95,6 +96,7 @@ function StockDetails(props) {
   return (
     <div className='StockDetails'>
       {/* /Chart Section */}
+      
       <section className='ChartSection'>
         <div className='SearchForm'>
           <form onSubmit={SearchTicker}>
@@ -127,78 +129,14 @@ function StockDetails(props) {
             symbol={`${stock.symbol}`}
           />
         </div>
-
-        {/* /Fundamentals Section */}
       </section>
-      <h2 id='companyName'>{stock.companyName}</h2>
-      <section className='fundamentals'>
-        <div>
-          <p>
-            previousClose : <span>${stock.previousClose}</span>
-          </p>
-          <p>
-            Open Price : <span>${stock.iexOpen}</span>
-          </p>
-          <p>
-            Average volume :{' '}
-            <span>${(stock.avgTotalVolume / 1000000).toFixed(2)} mil</span>
-          </p>
-          <p>
-            Previous Volume :{' '}
-            <span>${(stock.previousVolume / 1000000).toFixed(2)} mil</span>
-          </p>
-        </div>
-        <div>
-          {/* {stock} */}
-          <p>
-            Day Change:{' '}
-            <span>
-              ${stock.change} {'\u00A0'}
-              {'\u00A0'}:{'\u00A0'}
-              {'\u00A0'} {(stock.changePercent * 100).toFixed(2)}%
-            </span>
-          </p>
-          <p>
-            Year to date : <span>${(stock.ytdChange * 100).toFixed(2)}%</span>
-          </p>
-          <p>
-            52 Weeks Range :{' '}
-            <span>${(stock.week52High - stock.week52Low).toFixed(2)}</span>
-          </p>
-          <p>
-            Market Cap :{' '}
-            <span>${(stock.marketCap / 1000000000).toFixed(2)} bil</span>
-          </p>
-          {/* <p>P/E : {stock.peRatio}</p> */}
-        </div>
-        <div>
-          <p>
-            Bid Price : <span>${stock.iexBidPrice}</span>
-          </p>
-          <p>
-            Bid Size : <span>x{stock.iexBidSize}</span>
-          </p>
-          <p>
-            Ask Price : <span>${stock.iexAskPrice}</span>
-          </p>
-          <p>
-            Ask Size : <span>x{stock.iexAskSize}</span>
-          </p>
-        </div>
+        {/* Fundamentals */}
+        <StockStats stock={stock}/>
 
-        {/* <div>  buttons for chart
-                    <button onClick={changeChart(chartOptions.day)}/>
-                    <button onClick={changeChart(chartOptions.week)}/> 
-                    <button onClick={changeChart(chartOptions.month)}/>
-                    <button onClick={changeChart(chartOptions.year)}/>
-                    <button onClick={changeChart(chartOptions.twoYears)}/>
-                    <button onClick={changeChart(chartOptions.fiveYears)}/>
-                    <button onClick={changeChart(chartOptions.yearToDate)}/>
-                </div> */}
-        {/* /Fundamentals News */}
-      </section>
-      <h2 id='companyName'>News</h2>
-      <News />
+        
+        {/*  News */}
+      <h2 >News</h2>
+      <News/>
       <div></div>
     </div>
   );
