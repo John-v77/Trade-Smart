@@ -31,8 +31,6 @@ function StockDetails(props) {
   const getStockDetails = (stockSymbol) => {
     axios.get(link + `${stockSymbol}/quote?token=${token}`)
       .then((res) => {
-        
-        console.log(res, 'ssss11jjk');
       setStock(res.data);
     });
   };
@@ -77,7 +75,6 @@ function StockDetails(props) {
     return () => (isMounted = false);
   }, []);
 
-  //  console.log(chartData, '888')
   return (
     <div className='StockDetails'>
       {/* /Chart Section */}

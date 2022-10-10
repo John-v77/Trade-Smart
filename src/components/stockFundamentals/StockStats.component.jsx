@@ -1,6 +1,7 @@
 import React from 'react';
 import './stockStats.style.css'
 import chartPicture from "../../images/chart.jpg";
+import ChangeColor from '../auxComponents/ChangeColor';
 
 function StockStats(props) {
     const {
@@ -27,11 +28,11 @@ function StockStats(props) {
             <p className='companyName-fundamentals'>{companyName}</p>
             <div className='columsContainer'>
                 <div className='fundamentals-data'>
-                <p>
-            PreviousClose : <span>${previousClose}</span>
-          </p>
           <p>
             Open Price : <span>${iexOpen}</span>
+          </p>
+                <p>
+            PreviousClose : <span>${previousClose}</span>
           </p>
           <p>
             Average volume :{' '}
@@ -47,17 +48,25 @@ function StockStats(props) {
                 <p>
             Day Change:{' '}
             <span>
-              ${change} {'\u00A0'}
-              {'\u00A0'}:{'\u00A0'}
-              {'\u00A0'} {(changePercent * 100).toFixed(2)}%
+            <ChangeColor number={(changePercent * 100).toFixed(2)} type="%"/>
+            </span>
+            <span>
+            {'\u00A0'}
+            {'\u00A0'}:{'\u00A0'}
+            {'\u00A0'}
+            </span>
+            <span>
+            <ChangeColor number={(change)} type="$"/>
             </span>
           </p>
           <p>
-            Year to date : <span>${(ytdChange * 100).toFixed(2)}%</span>
+            Year to date : <span>  
+            <ChangeColor number={(ytdChange * 100).toFixed(2)} type="%"/>
+            </span>
           </p>
           <p>
             52 Weeks Range :{' '}
-            <span>${(week52High - week52Low).toFixed(2)}</span>
+            <span>{(week52High - week52Low).toFixed(2)}$</span>
           </p>
           <p>
             Market Cap :{' '}
@@ -67,7 +76,7 @@ function StockStats(props) {
                 {/* 3rd Column */}
                 <div className='fundamentals-data'>
                 <p>
-            Bid Price : <span>${iexBidPrice}</span>
+            Bid Price : <span>{iexBidPrice ? iexBidPrice + '$': 'market not open'}</span>
           </p>
           <p>
             Bid Size : <span>x{iexBidSize}</span>
@@ -76,7 +85,7 @@ function StockStats(props) {
             Ask Size : <span>x{iexAskSize}</span>
           </p>
           <p>
-            Ask Price : <span>${iexAskPrice}</span>
+            Ask Price : <span>{iexAskPrice}$</span>
           </p>
                 </div>
                 <div className='fundamentals-img'>
