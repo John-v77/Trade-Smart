@@ -9,6 +9,31 @@
     margin-bottom: 4rem;
 }
 
+.top-bts-MyList {
+    margin: 5px auto;
+    width: 80%;
+    text-align: right;
+}
+
+.sort-btn-MyList,
+.add_stock_btn {
+    height: 30px;
+    border-radius: 5px;
+    color: #191a19;
+    background-color: #f5f5f5;
+    border: 2px solid #24b37e;
+    font-size: small;
+    font-weight: 600;
+}
+
+.sort-btn-MyList:hover,
+.sort-btn-MyList:active,
+.add_stock_btn:hover,
+.add_stock_btn:active {
+    color: white;
+    background-color: #24b37e;
+}
+
 .watchList-table-head,
 .watchList-table {
     /* background-color: grey; */

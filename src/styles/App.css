@@ -328,23 +328,6 @@ button {
 
 
 
-/* /chart btn */
-
-
-.chart-btn-myList button:hover,
-.chart-btn-myList button:active {
-  border: none;
-  color: #24b37e;
-  font-weight: 600;
-}
-
-/* /delete btn */
-.del-btn-myList button {
-  background-color: rgb(245, 164, 164);
-}
-
-
-
 /* ^----------------------- Watch List Component -------------------------------^ */
 .portfolio-page {
   margin-left: 10%;

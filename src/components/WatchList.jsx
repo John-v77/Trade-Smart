@@ -151,6 +151,14 @@ function WatchList(props) {
       <h3>My List</h3>
 
 
+      <div className="top-bts-MyList">
+      <button className='sort-btn-MyList' onClick={sortList}>
+            Sort by change
+          </button>
+          <Link to='/Search-WatchList'>
+      <button class="add_stock_btn" style={{marginLeft: '10px'}}>Add Stock</button>
+          </Link>
+      </div>
       <div className='watchList-table-head'>
         <div className='watchList-table-cell'>
             Company
@@ -192,10 +200,6 @@ function WatchList(props) {
       </div>
 
 
-
-      {/* <div className="top-bts-MyList">
-                
-            </div> */}
       {/* <div className='watchList-table'>
         <div className='each-row-watchList-header'>
           <div></div>
