@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { actions } from './auxComponents/APi';
 import { utilities } from './auxComponents/Utilities';
 import { StocksContext } from './auxComponents/StockContext';
+import './watchList/watchList.style.css'
 
 function WatchList(props) {
   const storageList = async () => {
@@ -94,35 +95,35 @@ function WatchList(props) {
     return displayList.map((eachItem, keyOfRow) => {
       let numbersColor = utilities.changeColors(eachItem.change);
       return (
-        <div className='each-row-watchList' key={keyOfRow}>
-          <div>
+        <div className='watchList-table' key={keyOfRow}>
+          <div className='watchList-table-cell'>
             <p>{eachItem.companyName}</p>
           </div>
-          <div>
+          <div className='watchList-table-cell'>
             <p>{eachItem.symbol}</p>
           </div>
-          <div>
+          <div className='watchList-table-cell'>
             <p style={{ color: `${numbersColor}` }}>{eachItem.latestPrice}$</p>
           </div>
-          <div>
+          <div className='watchList-table-cell'>
             <p style={{ color: `${numbersColor}` }}>
               {utilities.addPlusSign(eachItem.change)}
               {eachItem.change.toFixed(2)}$
             </p>
           </div>
-          <div>
+          <div className='watchList-table-cell'>
             <p style={{ color: `${numbersColor}` }}>
               {utilities.addPlusSign(eachItem.changePercent)}
               {eachItem.changePercent.toFixed(2)}%
             </p>
           </div>
-          <div>
+          <div className='watchList-table-cell'>
             <p>{eachItem.week52Low}$</p>
           </div>
-          <div>
+          <div className='watchList-table-cell'>
             <p>{eachItem.week52High}$</p>
           </div>
-          <div>
+          <div className='watchList-table-cell'>
             <p
               style={{ color: `${utilities.changeColors(eachItem.ytdChange)}` }}
             >
@@ -130,13 +131,13 @@ function WatchList(props) {
               {(eachItem.ytdChange * 100).toFixed(2)}%
             </p>
           </div>
-          {/* <div className="chart-btn-myList">
-            <button onClick={() => utilities.displayChart(eachItem)}>
+          <div className='watchList-table-cell'>
+            <button className='chart-btn-myList' onClick={() => utilities.displayChart(eachItem)}>
               chart
             </button>
-          </div> */}
-          <div className='del-btn-myList'>
-            <button onClick={() => deleteRow(keyOfRow)} className='delete-Btn'>
+          </div>
+          <div className='watchList-table-cell'>
+            <button className='del-btn-myList' onClick={() => deleteRow(keyOfRow)} >
               delete
             </button>
           </div>
@@ -149,10 +150,53 @@ function WatchList(props) {
     <div className='watch-list-component'>
       <h3>My List</h3>
 
+
+      <div className='watchList-table-head'>
+        <div className='watchList-table-cell'>
+            Company
+        </div>
+        <div className='watchList-table-cell'>
+            Symbol
+        </div>
+        <div className='watchList-table-cell'>
+          Change
+        </div>
+        <div className='watchList-table-cell'>
+          Change %
+        </div>
+
+        <div className='watchList-table-cell'>
+        52-weeks-low
+        </div>
+
+        <div className='watchList-table-cell'>
+        52-weeks-high
+        </div>
+
+        <div className='watchList-table-cell'>
+        Year-to-date change %
+        </div>
+
+        <div className='watchList-table-cell'>
+        Year-to-date change %
+        </div>
+
+        <div className='watchList-table-cell'>
+        Chart
+        </div>
+
+        <div className='watchList-table-cell'>
+        Delete
+        </div>
+
+      </div>
+
+
+
       {/* <div className="top-bts-MyList">
                 
             </div> */}
-      <div className='watchList-table'>
+      {/* <div className='watchList-table'>
         <div className='each-row-watchList-header'>
           <div></div>
           <div>
@@ -187,11 +231,11 @@ function WatchList(props) {
               <br />
               Change
             </p>
-          </div>
+          </div> */}
           {/* <div>
           <p>chart</p>
         </div> */}
-          <div className='top-bts-MyList'>
+          {/* <div className='top-bts-MyList'>
             <Link to='/Search-WatchList'>
               <button className='top-bts-MyList_buttons'>Add Stock</button>
             </Link>
@@ -203,8 +247,9 @@ function WatchList(props) {
             Sort by change
           </button>
         </div>
-      </div>
+      </div> */}
       {/* <div>{utilities.displayChart()}</div> */}
+      {displayStocks()}
     </div>
   );
 }

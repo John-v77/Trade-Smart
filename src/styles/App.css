@@ -243,86 +243,11 @@ button {
   min-height: 67.1vh;
 }
 
-.portfolio-page,
-.watch-list-component {
+.portfolio-page {
   min-height: 72.2vh;
 }
 
-.watchList-table {
-  margin: auto;
-  width: 60%;
-}
 
-/* \/-----------------------Watch List Component ------------------------------\/ */
-
-.watch-list-component h3,
-.portfolio-page h3 {
-  margin-top: 4rem;
-}
-
-.top-bts-MyList {
-  padding-top: 2rem;
-  padding-left: 0;
-
-  /* text-align: right; */
-}
-
-.bot-btn-MyList,
-.top-bts-MyList_buttons {
-  height: 1.5rem;
-  border-radius: 5px;
-  color: #191a19;
-  background-color: whitesmoke;
-  border: #24b37e solid 2px;
-  font-size: small;
-  font-weight: 600;
-}
-
-
-.bot-bts-MyList {
-  display: flex;
-  justify-content: end;
-}
-
-
-.bot-btn-MyList:hover,
-.bot-btn-MyList:active,
-.top-bts-MyList_buttons:hover,
-.top-bts-MyList_buttons:active {
-  color: white;
-  background-color: #24b37e;
-}
-
-.bot-btn-MyList {
-  margin-top: 1rem;
-  margin-right: 7.4rem;
-  text-align: right;
-
-}
-
-.each-row-watchList,
-.each-row-watchList-header {
-  display: flex;
-  width: 90%;
-}
-
-.each-row-watchList div {
-  border: solid gainsboro 1px;
-  width: 8.5rem;
-}
-
-
-.each-row-watchList-header div {
-  border: none;
-  width: 8.5rem;
-  text-align: center;
-  color: rgb(87, 86, 86);
-  margin: 1px;
-}
-
-.each-row-watchList button {
-  margin-top: 12%;
-}
 
 /* \/----------------------- Search Form Component ------------------------------\/ */
 
@@ -401,22 +326,10 @@ button {
   margin-top: 0.5rem;
 }
 
-.chart-btn-myList button,
-.del-btn-myList button {
-  min-width: 60px;
-  height: 25px;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: small;
-  font-weight: 500;
-}
+
 
 /* /chart btn */
-.chart-btn-myList button {
-  border: gainsboro solid 2px;
-  color: cornflowerblue;
-}
+
 
 .chart-btn-myList button:hover,
 .chart-btn-myList button:active {
@@ -430,10 +343,7 @@ button {
   background-color: rgb(245, 164, 164);
 }
 
-.del-btn-myList button:hover,
-.del-btn-myList button:active {
-  background-color: rgb(245, 77, 77);
-}
+
 
 /* ^----------------------- Watch List Component -------------------------------^ */
 .portfolio-page {

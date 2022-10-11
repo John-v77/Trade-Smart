@@ -1,0 +1,66 @@
+.watch-list-component {
+    margin: 4rem 0;
+    width: 100%;
+    min-height: 72.2vh;
+
+}
+
+.watch-list-component h3 {
+    margin-bottom: 4rem;
+}
+
+.watchList-table-head,
+.watchList-table {
+    /* background-color: grey; */
+    width: 80%;
+    margin: 0 auto;
+    display: inline-grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    border: 1px solid grey;
+}
+
+.watchList-table-head div {
+    color: gray;
+    padding: 10px 0;
+}
+
+
+
+.watchList-table-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid rgb(210, 207, 207);
+}
+
+.chart-btn-myList,
+.del-btn-myList {
+    min-width: 60px;
+    height: 25px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: small;
+    font-weight: 500;
+}
+
+.del-btn-myList {
+    background-color: rgb(245, 164, 164);
+}
+
+.del-btn-myList:hover,
+.del-btn-myList:active {
+    background-color: rgb(245, 77, 77);
+    cursor: pointer;
+}
+
+.chart-btn-myList {
+    background-color: lightskyblue;
+
+}
+
+.chart-btn-myList:hover,
+.chart-btn-myList:active {
+    background-color: royalblue;
+    cursor: pointer;
+}
