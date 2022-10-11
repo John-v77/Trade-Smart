@@ -67,13 +67,16 @@ function StockDetails(props) {
     e.preventDefault();
     getStockChartData(stockSearched);
     getStockDetails(stockSearched);
+    setStock(stockSearched)
   };
 
   useEffect(() => {
     let isMounted = true;
     //defauld value
+    
     getStockChartData(currentStock);
     getStockDetails(currentStock);
+  
 
     return () => (isMounted = false);
   }, []);
@@ -121,7 +124,7 @@ function StockDetails(props) {
         
         {/*  News */}
       <h2 >News</h2>
-      <News/>
+      <News stock={stock.symbol}/>
       <div></div>
     </div>
   );

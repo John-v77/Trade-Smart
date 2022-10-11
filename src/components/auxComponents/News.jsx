@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { actions } from "./APi";
 function News(props) {
-    
+
     let[news, setNews] = useState([])
-    let symbol ='SPY'
+    let symbol = props.stock ? props.stock :'SPY'
 
     useEffect(() => {
         let isMounted = true
