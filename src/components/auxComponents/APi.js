@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const token = process.env.REACT_APP_TOKEN1
+const token = process.env.REACT_APP_TOKEN2
 const link = process.env.REACT_APP_LINK
 
 const interval = 'intraday-prices'
