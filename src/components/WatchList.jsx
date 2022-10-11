@@ -132,9 +132,12 @@ function WatchList(props) {
             </p>
           </div>
           <div className='watchList-table-cell'>
-            <button className='chart-btn-myList' onClick={() => utilities.displayChart(eachItem)}>
+          <Link to={{pathname: '/StockDetails',
+                   stockQueried:eachItem.symbol}}>
+            <button className='chart-btn-myList'>
               chart
             </button>
+          </Link>
           </div>
           <div className='watchList-table-cell'>
             <button className='del-btn-myList' onClick={() => deleteRow(keyOfRow)} >

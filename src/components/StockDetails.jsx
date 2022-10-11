@@ -6,6 +6,9 @@ import News from './auxComponents/News.jsx';
 import StockStats from './stockFundamentals/StockStats.component.jsx';
 
 function StockDetails(props) {
+
+  let currentStock = props.location.stockQueried ? props.location.stockQueried  : 'V'
+
   let [stockSearched, setStockSearched] = useState('');
   let [stock, setStock] = useState({});
   let [chartData, setCharData] = useState([]);
@@ -69,8 +72,8 @@ function StockDetails(props) {
   useEffect(() => {
     let isMounted = true;
     //defauld value
-    getStockChartData('SPY');
-    getStockDetails('SPY');
+    getStockChartData(currentStock);
+    getStockDetails(currentStock);
 
     return () => (isMounted = false);
   }, []);
